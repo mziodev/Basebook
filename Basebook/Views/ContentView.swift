@@ -9,27 +9,54 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var inputNumber: String = ""
-    @State var radix: Radix = .decimal
-    @State var conversions: [(String, String)] = []
+    @State private var inputNumber: String = ""
+    @State private var radix: Radix = .decimal
+    @State private var conversions: [(String, String)] = []
+    
+    @FocusState private var isTextFieldFocused: Bool
+    
+    private var keyboardType: UIKeyboardType {
+        (
+            radix == .duodecimal || radix == .hexadecimal
+        ) ? .numbersAndPunctuation : .numberPad
+    }
     
     var body: some View {
         NavigationStack {
             VStack {
-                VStack {
-                    HStack {
-                        TextField("0", text: $inputNumber)
-                            .multilineTextAlignment(.trailing)
-                            .font(.title)
-                        
-                        Picker("Select a base", selection: $radix) {
-                            ForEach(Radix.allCases, id: \.self) {
-                                Text($0.name)
-                            }
+                VStack(alignment: .trailing) {
+                    TextField("0", text: $inputNumber)
+                        .multilineTextAlignment(.trailing)
+                        .font(.system(size: 50))
+                        .focused($isTextFieldFocused)
+                        .keyboardType(keyboardType)
+                        .textInputAutocapitalization(.never)
+                    
+                    Text("\(radix.name) base")
+                        .font(.caption.smallCaps())
+                        .bold()
+                        .foregroundStyle(.secondary)
+                    
+                    Picker("Select a base", selection: $radix) {
+                        ForEach(Radix.allCases, id: \.self) {
+                            Text($0.numberName)
+                        }
+                    }
+                    .pickerStyle(.palette)
+                    .onChange(of: radix) { oldValue, newValue in
+                        if newValue.type != oldValue.type {
+                            isTextFieldFocused = false
+                            
+                            DispatchQueue.main
+                                .asyncAfter(deadline: .now() + 0.1) {
+                                    isTextFieldFocused = true
+                                }
                         }
                     }
                     
                     HStack(spacing: 30) {
+                        Spacer()
+                        
                         Button("Clear", role: .destructive) {
                             withAnimation {
                                 inputNumber = ""
@@ -50,6 +77,8 @@ struct ContentView: View {
                         .background(.green)
                         .foregroundStyle(.white)
                         .clipShape(.rect(cornerRadius: 8))
+                        
+                        Spacer()
                     }
                     .padding(.vertical)
                 }
@@ -64,7 +93,7 @@ struct ContentView: View {
                                 Text(name)
                                     .font(.headline)
                                     .foregroundStyle(
-                                        name == radix.name ? Color.accentColor : .primary
+                                        name == radix.numberName ? Color.accentColor : .primary
                                     )
                                 
                                 Spacer()
@@ -73,7 +102,7 @@ struct ContentView: View {
                                     .font(.title)
                                     .fontDesign(.rounded)
                                     .foregroundStyle(
-                                        name == radix.name ? Color.accentColor : .primary
+                                        name == radix.numberName ? Color.accentColor : .primary
                                     )
                             }
                         }
@@ -98,7 +127,7 @@ struct ContentView: View {
                 to: radix.value
             )
             
-            conversions.append((radix.name, conversionValue))
+            conversions.append((radix.numberName, conversionValue))
         }
     }
     
