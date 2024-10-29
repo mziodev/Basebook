@@ -10,15 +10,17 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var inputNumber: String = ""
-    @State private var radix: Radix = .decimal
-    @State private var conversions: [(String, String)] = []
+    @State private var selectedRadix: Radix = .decimal
+    @State private var conversions: [(Radix, String)] = []
     
     @FocusState private var isTextFieldFocused: Bool
     
     private var keyboardType: UIKeyboardType {
-        (
-            radix == .duodecimal || radix == .hexadecimal
-        ) ? .numbersAndPunctuation : .numberPad
+        if selectedRadix == .duodecimal || selectedRadix == .hexadecimal {
+            .numbersAndPunctuation
+        } else {
+            .numberPad
+        }
     }
     
     var body: some View {
@@ -27,23 +29,25 @@ struct ContentView: View {
                 VStack(alignment: .trailing) {
                     TextField("0", text: $inputNumber)
                         .multilineTextAlignment(.trailing)
-                        .font(.system(size: 50))
+                        .font(.system(size: 60))
+                        .fontDesign(.rounded)
                         .focused($isTextFieldFocused)
                         .keyboardType(keyboardType)
                         .textInputAutocapitalization(.never)
                     
-                    Text("\(radix.name) base")
-                        .font(.caption.smallCaps())
-                        .bold()
-                        .foregroundStyle(.secondary)
+                    Text("\(selectedRadix.name) base")
+                        .font(.callout.smallCaps())
+                        .foregroundStyle(.accent)
                     
-                    Picker("Select a base", selection: $radix) {
+                    Picker("Select a base", selection: $selectedRadix) {
                         ForEach(Radix.allCases, id: \.self) {
                             Text($0.numberName)
                         }
                     }
                     .pickerStyle(.palette)
-                    .onChange(of: radix) { oldValue, newValue in
+                    .onChange(of: selectedRadix) { oldValue, newValue in
+                        clearTextField()
+
                         if newValue.type != oldValue.type {
                             isTextFieldFocused = false
                             
@@ -58,10 +62,7 @@ struct ContentView: View {
                         Spacer()
                         
                         Button("Clear", role: .destructive) {
-                            withAnimation {
-                                inputNumber = ""
-                                conversions = []
-                            }
+                            clearTextField()
                         }
                         .frame(width: 100, height: 33)
                         .background(.red)
@@ -70,7 +71,7 @@ struct ContentView: View {
                         
                         Button("Convert") {
                             withAnimation {
-                                getConversions()
+                                fillConversions()
                             }
                         }
                         .frame(width: 100, height: 33)
@@ -85,40 +86,66 @@ struct ContentView: View {
                 .padding([.top, .horizontal])
                 
                 List {
-                    Section("Conversions") {
-                        ForEach(conversions, id: \.0) {
-                            name,
-                            value in
-                            HStack {
-                                Text(name)
-                                    .font(.headline)
-                                    .foregroundStyle(
-                                        name == radix.numberName ? Color.accentColor : .primary
-                                    )
-                                
-                                Spacer()
-                                
-                                Text(value)
-                                    .font(.title)
-                                    .fontDesign(.rounded)
-                                    .foregroundStyle(
-                                        name == radix.numberName ? Color.accentColor : .primary
-                                    )
+                    if !conversions.isEmpty {
+                        Section {
+                            ForEach(conversions, id: \.0) { radix, value in
+                                ListRow(
+                                    currentRadix: radix,
+                                    selectedRadix: selectedRadix,
+                                    value: value
+                                )
+                                .listRowBackground(Color.clear)
                             }
+                        } header: {
+                            Text("Conversions")
+                                .font(.callout.smallCaps())
                         }
                     }
                 }
-                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
+                .scrollIndicators(.hidden)
+                .padding(.bottom)
+                .overlay {
+                    if conversions.isEmpty {
+                        VStack(spacing: 20) {
+                            Image(systemName: "circle.hexagonpath.fill")
+                                .font(.system(size: 120))
+                                .foregroundColor(.accent.opacity(0.4))
+                            
+                            Text("Select a base and tap on the big zero for introduce a number to convert :)")
+                                .font(.callout)
+                                .foregroundStyle(.secondary)
+                        }
+                        .padding(40)
+                    }
+                }
             }
+            .edgesIgnoringSafeArea(.bottom)
             .navigationTitle("Basebook")
+            .background(
+                Gradient(colors: [.accent.opacity(0.2), .accent.opacity(0.5)])
+            )
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("History", systemImage: "clock.arrow.trianglehead.counterclockwise.rotate.90") {
+                        // show history
+                    }
+                }
+            }
         }
     }
     
-    private func getConversions() {
+    private func clearTextField() {
+        withAnimation {
+            inputNumber = ""
+            conversions = []
+        }
+    }
+    
+    private func fillConversions() {
         if !conversions.isEmpty { conversions = [] }
         
-        let decimalInputNumber = getDecimalInputNumber()
-
+        let decimalInputNumber = convertInputNumberToDecimal()
         if decimalInputNumber == 0 { return }
         
         Radix.allCases.forEach { radix in
@@ -127,17 +154,19 @@ struct ContentView: View {
                 to: radix.value
             )
             
-            conversions.append((radix.numberName, conversionValue))
+            conversions.append((radix, conversionValue))
         }
+        
+        isTextFieldFocused = false
     }
     
-    private func getDecimalInputNumber() -> Int {
-        if radix == .decimal {
+    private func convertInputNumberToDecimal() -> Int {
+        if selectedRadix == .decimal {
             return Int(inputNumber) ?? 0
         } else {
             return RadixConverter.convert(
                 inputNumber,
-                from: radix.value
+                from: selectedRadix.value
             ) ?? 0
         }
     }
