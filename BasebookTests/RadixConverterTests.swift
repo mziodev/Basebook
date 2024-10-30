@@ -29,18 +29,31 @@ final class RadixConverterTests: XCTestCase {
     
     func testConvertStringFromRadix() {
         
-        XCTAssertEqual(RadixConverter.convert("1010", from: 2), 10)
-        XCTAssertEqual(RadixConverter.convert("12", from: 8), 10)
-        XCTAssertEqual(RadixConverter.convert("ff", from: 16), 255)
-        XCTAssertEqual(RadixConverter.convert("00010", from: 2), 2)
+        XCTAssertEqual(try RadixConverter.convert("1010", from: 2), 10)
+        XCTAssertEqual(try RadixConverter.convert("12", from: 8), 10)
+        XCTAssertEqual(try RadixConverter.convert("ff", from: 16), 255)
+        XCTAssertEqual(try RadixConverter.convert("00010", from: 2), 2)
     }
     
     func testConvertStringFromInvalidRadix() {
         
-        // Test converting with invalid radix
-        XCTAssertNil(RadixConverter.convert("10", from: 1))
-        XCTAssertNil(RadixConverter.convert("10", from: 37))
-        XCTAssertNil(RadixConverter.convert(" 10", from: 10))
-        XCTAssertNil(RadixConverter.convert("1-0", from: 10))
+        XCTAssertThrowsError(try RadixConverter.convert("10", from: 1)) { error in
+            XCTAssertEqual(error as? ConversionError, ConversionError.invalidRadix)
+        }
+        
+        XCTAssertThrowsError(try RadixConverter.convert("10", from: 37)) { error in
+            XCTAssertEqual(error as? ConversionError, ConversionError.invalidRadix)
+        }
+    }
+    
+    func testConvertStringFromInvalidNumber() {
+        
+        XCTAssertThrowsError(try RadixConverter.convert(" 10", from: 10)) { error in
+            XCTAssertEqual(error as? ConversionError, ConversionError.invalidNumber)
+        }
+        
+        XCTAssertThrowsError(try RadixConverter.convert("1-0", from: 10)) { error in
+            XCTAssertEqual(error as? ConversionError, ConversionError.invalidNumber)
+        }
     }
 }

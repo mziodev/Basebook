@@ -12,8 +12,15 @@ struct ContentView: View {
     @State private var inputNumber: String = ""
     @State private var selectedRadix: Radix = .decimal
     @State private var conversions: [(Radix, String)] = []
+    @State private var showingConversionAlert: Bool = false
+    
+    @State private var alertMessage: String = ""
     
     @FocusState private var isTextFieldFocused: Bool
+    
+    private var isZeroInputNumber: Bool {
+        inputNumber == "0" || inputNumber.isEmpty
+    }
     
     var body: some View {
         NavigationStack {
@@ -119,9 +126,18 @@ struct ContentView: View {
             .background(
                 Gradient(colors: [.accent.opacity(0.2), .accent.opacity(0.5)])
             )
+            .alert(
+                "Warning!",
+                isPresented: $showingConversionAlert,
+                actions: { Button("OK") { clearTextField() } },
+                message: { Text(alertMessage) }
+            )
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("History", systemImage: "clock.arrow.trianglehead.counterclockwise.rotate.90") {
+                    Button(
+                        "History",
+                        systemImage: "clock.arrow.trianglehead.counterclockwise.rotate.90"
+                    ) {
                         // show history
                     }
                 }
@@ -137,20 +153,37 @@ struct ContentView: View {
     }
     
     private func fillConversions() {
-        if inputNumber == "0" || inputNumber.isEmpty { return }
+        if isZeroInputNumber {
+            alertMessage = ConversionError.zeroNumber.localizedDescription
+            showingConversionAlert = true
+            
+            return
+        }
         
-        if !conversions.isEmpty { conversions.removeAll(keepingCapacity: true) }
+        if !conversions.isEmpty {
+            conversions.removeAll(keepingCapacity: true)
+        }
         
-        guard let decimalInputNumber = RadixConverter.convert(
-            inputNumber,
-            from: selectedRadix.value
-        ) else { return }
-        
-        conversions = ConversionsViewModel.getConversions(
-            for: decimalInputNumber
-        )
-        
-        isTextFieldFocused = false
+        do {
+            let decimalInputNumber = try RadixConverter.convert(
+                inputNumber,
+                from: selectedRadix.value
+            )
+            
+            conversions = ConversionsViewModel.getConversions(
+                for: decimalInputNumber
+            )
+            
+            isTextFieldFocused = false
+        } catch let error as ConversionError {
+            alertMessage = error.localizedDescription
+            showingConversionAlert = true
+        } catch {
+            alertMessage = ConversionError.unexpectedError.localizedDescription
+            showingConversionAlert = true
+            
+            return
+        }
     }
 }
 

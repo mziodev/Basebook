@@ -13,9 +13,15 @@ struct RadixConverter {
         String(number, radix: radix)
     }
     
-    static func convert(_ number: String, from radix: Int) -> Int? {
-        guard (2...36).contains(radix) else { return nil }
+    static func convert(_ number: String, from radix: Int) throws -> Int {
+        guard (2...36).contains(radix) else {
+            throw ConversionError.invalidRadix
+        }
         
-        return Int(number, radix: radix)
+        guard let result = Int(number, radix: radix) else {
+            throw ConversionError.invalidNumber
+        }
+        
+        return result
     }
 }
