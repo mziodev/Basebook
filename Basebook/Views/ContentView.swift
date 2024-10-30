@@ -15,14 +15,6 @@ struct ContentView: View {
     
     @FocusState private var isTextFieldFocused: Bool
     
-    private var keyboardType: UIKeyboardType {
-        if selectedRadix == .duodecimal || selectedRadix == .hexadecimal {
-            .numbersAndPunctuation
-        } else {
-            .numberPad
-        }
-    }
-    
     var body: some View {
         NavigationStack {
             VStack {
@@ -32,7 +24,7 @@ struct ContentView: View {
                         .font(.system(size: 60))
                         .fontDesign(.rounded)
                         .focused($isTextFieldFocused)
-                        .keyboardType(keyboardType)
+                        .keyboardType(selectedRadix.keyboardType)
                         .textInputAutocapitalization(.never)
                     
                     Text("\(selectedRadix.name) base")
@@ -48,13 +40,15 @@ struct ContentView: View {
                     .onChange(of: selectedRadix) { oldValue, newValue in
                         clearTextField()
 
-                        if newValue.type != oldValue.type {
-                            isTextFieldFocused = false
-                            
-                            DispatchQueue.main
-                                .asyncAfter(deadline: .now() + 0.1) {
-                                    isTextFieldFocused = true
-                                }
+                        if isTextFieldFocused {
+                            if newValue.keyboardType != oldValue.keyboardType {
+                                isTextFieldFocused = false
+                                
+                                DispatchQueue.main
+                                    .asyncAfter(deadline: .now() + 0.1) {
+                                        isTextFieldFocused = true
+                                    }
+                            }
                         }
                     }
                     

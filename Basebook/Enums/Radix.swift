@@ -5,7 +5,7 @@
 //  Created by MZiO on 28/10/24.
 //
 
-import Foundation
+import SwiftUI
 
 enum Radix: String, CaseIterable {
     
@@ -43,29 +43,12 @@ enum Radix: String, CaseIterable {
         }
     }
     
-    // 0: under or decimal type, 1: over decimal type
-    var type: Int {
+    var keyboardType: UIKeyboardType {
         switch self {
-        case .binary:
-            0
-        case .ternary:
-            0
-        case .quaternary:
-            0
-        case .quinary:
-            0
-        case .senary:
-            0
-        case .octal:
-            0
-        case .nonary:
-            0
-        case .decimal:
-            0
-        case .duodecimal:
-            1
-        case .hexadecimal:
-            1
+        case .binary, .ternary, .quaternary, .quinary, .senary, .octal, .nonary, .decimal:
+                .numberPad
+        case .duodecimal, .hexadecimal:
+                .numbersAndPunctuation
         }
     }
 }
