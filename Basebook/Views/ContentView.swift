@@ -143,32 +143,20 @@ struct ContentView: View {
     }
     
     private func fillConversions() {
-        if !conversions.isEmpty { conversions = [] }
+        if inputNumber == "0" || inputNumber.isEmpty { return }
         
-        let decimalInputNumber = convertInputNumberToDecimal()
-        if decimalInputNumber == 0 { return }
+        if !conversions.isEmpty { conversions.removeAll(keepingCapacity: true) }
         
-        Radix.allCases.forEach { radix in
-            let conversionValue = RadixConverter.convert(
-                decimalInputNumber,
-                to: radix.value
-            )
-            
-            conversions.append((radix, conversionValue))
-        }
+        guard let decimalInputNumber = RadixConverter.convert(
+            inputNumber,
+            from: selectedRadix.value
+        ) else { return }
+        
+        conversions = ConversionsViewModel.getConversions(
+            for: decimalInputNumber
+        )
         
         isTextFieldFocused = false
-    }
-    
-    private func convertInputNumberToDecimal() -> Int {
-        if selectedRadix == .decimal {
-            return Int(inputNumber) ?? 0
-        } else {
-            return RadixConverter.convert(
-                inputNumber,
-                from: selectedRadix.value
-            ) ?? 0
-        }
     }
 }
 
