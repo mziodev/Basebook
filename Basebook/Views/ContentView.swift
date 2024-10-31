@@ -54,7 +54,7 @@ struct ContentView: View {
                         .keyboardType(selectedRadix.keyboardType)
                         .textInputAutocapitalization(.never)
                     
-                    Text("\(selectedRadix.name) base")
+                    Text("\(selectedRadix.localizedName) base")
                         .font(.callout.smallCaps())
                         .foregroundStyle(.accent)
                     
@@ -110,7 +110,9 @@ struct ContentView: View {
                                 .listRowBackground(Color.clear)
                             }
                         } header: {
-                            ListSectionHeader(title: "Conversions")
+                            ListSectionHeader(
+                                title: String(localized: "Conversions")
+                            )
                         }
                     }
                 }

@@ -18,9 +18,9 @@ enum ConversionError: Error {
         case .zeroNumber:
             String(localized: "Zero is zero in all bases, just try another one.")
         case .invalidRadix:
-            String(localized: "Invalid radix, please check your radix.")
+            String(localized: "Invalid base, please check your base.")
         case .invalidNumber:
-            String(localized: "Invalid number for the selected radix, please check your number.")
+            String(localized: "Invalid number for the selected base, please check your number.")
         case .unexpectedError:
             String(localized: "An unexpected error occurred, please try again.")
         }

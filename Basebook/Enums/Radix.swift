@@ -20,12 +20,42 @@ enum Radix: String, CaseIterable {
     case duodecimal
     case hexadecimal
     
-    var name: String {
-        self.rawValue.capitalized        
-    }
-    
     var numberName: String {
         String(self.value)
+    }
+    
+    var localizedName: String {
+        switch self {
+        case .binary:
+            String(localized: "Binary", comment: "Feminine version of Binary")
+        case .ternary:
+            String(localized: "Ternary", comment: "Feminine version of Ternary")
+        case .quaternary:
+            String(
+                localized: "Quaternary",
+                comment: "Feminine version of Quaternary"
+            )
+        case .quinary:
+            String(localized: "Quinary", comment: "Feminine version of Quinary")
+        case .senary:
+            String(localized: "Senary", comment: "Feminine version of Senary")
+        case .octal:
+            String(localized: "Octal", comment: "Feminine version of Octal")
+        case .nonary:
+            String(localized: "Nonary", comment: "Feminine version of Nonary")
+        case .decimal:
+            String(localized: "Decimal", comment: "Feminine version of Decimal")
+        case .duodecimal:
+            String(
+                localized: "Duodecimal",
+                comment: "Feminine version of Duodecimal"
+            )
+        case .hexadecimal:
+            String(
+                localized: "Hexadecimal",
+                comment: "Feminine version of Hexadecimal"
+            )
+        }
     }
     
     var value: Int {

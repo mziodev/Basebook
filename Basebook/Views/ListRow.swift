@@ -14,7 +14,7 @@ struct ListRow: View {
     
     var body: some View {
         HStack {
-            Text(currentRadix.name)
+            Text(currentRadix.localizedName)
                 .font(.headline)
                 .foregroundStyle(
                     currentRadix == selectedRadix ? Color.accentColor : .primary
