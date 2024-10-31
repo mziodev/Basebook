@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     @State private var inputNumber: String = ""
     @State private var selectedRadix: Radix = .decimal
     @State private var conversions: [(Radix, String)] = []
@@ -20,6 +22,24 @@ struct ContentView: View {
     
     private var isZeroInputNumber: Bool {
         inputNumber == "0" || inputNumber.isEmpty
+    }
+    
+    private var backgroundGradient: Gradient {
+        if colorScheme == .dark {
+            Gradient(
+                colors: [
+                    Color.bbPersian.opacity(0.4),
+                    Color.bbForestGreen.opacity(0.5),
+                ]
+            )
+        } else {
+            Gradient(
+                colors: [
+                    Color.bbPersian.opacity(0.5),
+                    Color.bbForestGreen.opacity(0.5),
+                ]
+            )
+        }
     }
     
     var body: some View {
@@ -44,19 +64,11 @@ struct ContentView: View {
                         }
                     }
                     .pickerStyle(.palette)
-                    .onChange(of: selectedRadix) { oldValue, newValue in
-                        clearTextField()
-
-                        if isTextFieldFocused {
-                            if newValue.keyboardType != oldValue.keyboardType {
-                                isTextFieldFocused = false
-                                
-                                DispatchQueue.main
-                                    .asyncAfter(deadline: .now() + 0.1) {
-                                        isTextFieldFocused = true
-                                    }
-                            }
-                        }
+                    .onChange(of: selectedRadix) { oldvalue, newValue in
+                        handleRadixChange(
+                            oldValue: oldvalue,
+                            newValue: newValue
+                        )
                     }
                     
                     HStack(spacing: 30) {
@@ -66,7 +78,7 @@ struct ContentView: View {
                             clearTextField()
                         }
                         .frame(width: 100, height: 33)
-                        .background(.red)
+                        .background(.bbEngineeringOrange)
                         .foregroundStyle(.white)
                         .clipShape(.rect(cornerRadius: 8))
                         
@@ -76,7 +88,7 @@ struct ContentView: View {
                             }
                         }
                         .frame(width: 100, height: 33)
-                        .background(.green)
+                        .background(.bbForestGreen)
                         .foregroundStyle(.white)
                         .clipShape(.rect(cornerRadius: 8))
                         
@@ -98,8 +110,7 @@ struct ContentView: View {
                                 .listRowBackground(Color.clear)
                             }
                         } header: {
-                            Text("Conversions")
-                                .font(.callout.smallCaps())
+                            ListSectionHeader(title: "Conversions")
                         }
                     }
                 }
@@ -108,24 +119,13 @@ struct ContentView: View {
                 .padding(.bottom)
                 .overlay {
                     if conversions.isEmpty {
-                        VStack(spacing: 20) {
-                            Image(systemName: "circle.hexagonpath.fill")
-                                .font(.system(size: 120))
-                                .foregroundColor(.accent.opacity(0.4))
-                            
-                            Text("Select a base and tap on the big zero for introduce a number to convert :)")
-                                .font(.callout)
-                                .foregroundStyle(.secondary)
-                        }
-                        .padding(40)
+                        EmptyConversions()
                     }
                 }
             }
             .edgesIgnoringSafeArea(.bottom)
             .navigationTitle("Basebook")
-            .background(
-                Gradient(colors: [.accent.opacity(0.2), .accent.opacity(0.5)])
-            )
+            .background(backgroundGradient)
             .alert(
                 "Warning!",
                 isPresented: $showingConversionAlert,
@@ -149,6 +149,21 @@ struct ContentView: View {
         withAnimation {
             inputNumber = ""
             conversions = []
+        }
+    }
+    
+    private func handleRadixChange(oldValue: Radix, newValue: Radix) {
+        clearTextField()
+
+        if isTextFieldFocused {
+            if newValue.keyboardType != oldValue.keyboardType {
+                isTextFieldFocused = false
+                
+                DispatchQueue.main
+                    .asyncAfter(deadline: .now() + 0.1) {
+                        isTextFieldFocused = true
+                    }
+            }
         }
     }
     
