@@ -5,41 +5,38 @@
 //  Created by MZiO on 26/10/24.
 //
 
+import SwiftData
 import SwiftUI
 
 struct ContentView: View {
-    
+    @Environment(\.modelContext) var modelContext
     @Environment(\.colorScheme) var colorScheme
     
     @State private var inputNumber: String = ""
     @State private var selectedRadix: Radix = .decimal
-    @State private var conversions: [(Radix, String)] = []
+    @State private var radixConversions: [RadixConversion] = []
     @State private var showingConversionAlert: Bool = false
     
     @State private var alertMessage: String = ""
     
     @FocusState private var isTextFieldFocused: Bool
     
-    private var isZeroInputNumber: Bool {
-        inputNumber == "0" || inputNumber.isEmpty
-    }
+    private let lightGradient = Gradient(colors: [
+        Color.bbPersian.opacity(0.5),
+        Color.bbForestGreen.opacity(0.5),
+    ])
+    
+    private let darkGradient = Gradient(colors: [
+        Color.bbPersian.opacity(0.4),
+        Color.bbForestGreen.opacity(0.5),
+    ])
     
     private var backgroundGradient: Gradient {
-        if colorScheme == .dark {
-            Gradient(
-                colors: [
-                    Color.bbPersian.opacity(0.4),
-                    Color.bbForestGreen.opacity(0.5),
-                ]
-            )
-        } else {
-            Gradient(
-                colors: [
-                    Color.bbPersian.opacity(0.5),
-                    Color.bbForestGreen.opacity(0.5),
-                ]
-            )
-        }
+        colorScheme == .dark ? darkGradient : lightGradient
+    }
+    
+    private var isZeroInputNumber: Bool {
+        inputNumber == "0" || inputNumber.isEmpty
     }
     
     var body: some View {
@@ -84,7 +81,7 @@ struct ContentView: View {
                         
                         Button("Convert") {
                             withAnimation {
-                                fillConversions()
+                                fillRadixConversionSet()
                             }
                         }
                         .frame(width: 100, height: 33)
@@ -99,13 +96,13 @@ struct ContentView: View {
                 .padding([.top, .horizontal])
                 
                 List {
-                    if !conversions.isEmpty {
+                    if !radixConversions.isEmpty {
                         Section {
-                            ForEach(conversions, id: \.0) { radix, value in
+                            ForEach(radixConversions, id:\.radix) { radixConversion in
                                 ListRow(
-                                    currentRadix: radix,
+                                    currentRadix: radixConversion.radix,
                                     selectedRadix: selectedRadix,
-                                    value: value
+                                    value: radixConversion.value
                                 )
                                 .listRowBackground(Color.clear)
                             }
@@ -120,8 +117,8 @@ struct ContentView: View {
                 .scrollIndicators(.hidden)
                 .padding(.bottom)
                 .overlay {
-                    if conversions.isEmpty {
-                        EmptyConversions()
+                    if radixConversions.isEmpty {
+                        EmptyRadixConversions()
                     }
                 }
             }
@@ -150,7 +147,7 @@ struct ContentView: View {
     private func clearTextField() {
         withAnimation {
             inputNumber = ""
-            conversions = []
+            radixConversions = []
         }
     }
     
@@ -169,7 +166,7 @@ struct ContentView: View {
         }
     }
     
-    private func fillConversions() {
+    private func fillRadixConversionSet() {
         if isZeroInputNumber {
             alertMessage = ConversionError.zeroNumber.localizedDescription
             showingConversionAlert = true
@@ -177,8 +174,8 @@ struct ContentView: View {
             return
         }
         
-        if !conversions.isEmpty {
-            conversions.removeAll(keepingCapacity: true)
+        if !radixConversions.isEmpty {
+            radixConversions.removeAll(keepingCapacity: true)
         }
         
         do {
@@ -187,7 +184,7 @@ struct ContentView: View {
                 from: selectedRadix.value
             )
             
-            conversions = ConversionsViewModel.getConversions(
+            radixConversions = ConversionsViewModel.getConversionSet(
                 for: decimalInputNumber
             )
             

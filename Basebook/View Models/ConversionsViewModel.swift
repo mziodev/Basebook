@@ -9,9 +9,9 @@ import Foundation
 
 class ConversionsViewModel {
     
-    static func getConversions(for number: Int) -> [(Radix, String)] {
+    static func getConversionSet(for number: Int) -> [RadixConversion] {
         
-        var conversions: [(Radix, String)] = []
+        var conversionSet: [RadixConversion] = []
         
         Radix.allCases.forEach { radix in
             let conversionValue = RadixConverter.convert(
@@ -19,9 +19,14 @@ class ConversionsViewModel {
                 to: radix.value
             )
             
-            conversions.append((radix, conversionValue))
+            conversionSet.append(
+                RadixConversion(
+                    radix: radix,
+                    value: conversionValue
+                )
+            )
         }
         
-        return conversions
+        return conversionSet
     }
 }

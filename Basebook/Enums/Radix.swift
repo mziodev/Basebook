@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum Radix: String, CaseIterable {
+enum Radix: String, Codable, CaseIterable {
     
     case binary
     case ternary

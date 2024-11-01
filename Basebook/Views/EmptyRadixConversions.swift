@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EmptyConversions: View {
+struct EmptyRadixConversions: View {
     var body: some View {
         VStack(spacing: 20) {
             Image(systemName: "circle.hexagonpath.fill")
@@ -19,10 +19,9 @@ struct EmptyConversions: View {
                 .foregroundStyle(.secondary)
         }
         .padding(40)
-        .padding(.bottom, 80)
     }
 }
 
 #Preview {
-    EmptyConversions()
+    EmptyRadixConversions()
 }

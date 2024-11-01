@@ -99,6 +99,7 @@
       }
     },
     "Conversions" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
