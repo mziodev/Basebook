@@ -49,6 +49,22 @@
         }
       }
     },
+    "Are you sure you want to clear the history?" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Estás seguro de que quieres borrar el historial?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etes-vous sûr de vouloir effacer l'historique ?"
+          }
+        }
+      }
+    },
     "Basebook" : {
       "localizations" : {
         "es" : {
@@ -61,6 +77,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Basebook"
+          }
+        }
+      }
+    },
+    "Basebook logo with an hexagons circle" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logotipo de Basebook con un círculo de hexágonos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logo Basebook avec un cercle d'hexagones"
           }
         }
       }
@@ -98,8 +130,23 @@
         }
       }
     },
+    "Clear History" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borrar Historial"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer l'historique"
+          }
+        }
+      }
+    },
     "Conversions" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -165,6 +212,22 @@
         }
       }
     },
+    "From %@ base" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desde base %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À partir de la base %@"
+          }
+        }
+      }
+    },
     "Hexadecimal" : {
       "comment" : "Feminine version of Hexadecimal",
       "localizations" : {
@@ -214,18 +277,18 @@
         }
       }
     },
-    "Invalid number for the selected base, please check your number." : {
+    "Invalid number/character for the selected base, please check your number/character." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Número no válido para la base seleccionada, por favor comprueba tu número."
+            "value" : "Número/carácter no válido para la base seleccionada, por favor verifica tu número/carácter."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Numéro invalide pour la base sélectionnée, veuillez vérifier votre numéro."
+            "value" : "Numéro/caractère invalide pour la base sélectionnée, veuillez vérifier votre numéro/caractère."
           }
         }
       }
@@ -260,6 +323,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Octale"
+          }
+        }
+      }
+    },
+    "Ok" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
           }
         }
       }
@@ -376,6 +455,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ternaire"
+          }
+        }
+      }
+    },
+    "Warning" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aviso"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avertissement"
           }
         }
       }

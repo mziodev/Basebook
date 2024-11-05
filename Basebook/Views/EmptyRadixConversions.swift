@@ -9,16 +9,19 @@ import SwiftUI
 
 struct EmptyRadixConversions: View {
     var body: some View {
-        VStack(spacing: 20) {
-            Image(systemName: "circle.hexagonpath.fill")
-                .font(.system(size: 120))
-                .foregroundColor(.accentColor.opacity(0.7))
+        VStack(spacing: 10) {
+            Image("BasebookLogoBackground")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 220)
+                .opacity(0.9)
+                .accessibilityLabel("Basebook logo with an hexagons circle")
             
             Text("Select a base, tap on the big zero and introduce a number to convert :)")
                 .font(.callout)
                 .foregroundStyle(.secondary)
         }
-        .padding(40)
+        .padding(.horizontal, 30)
     }
 }
 

@@ -20,7 +20,7 @@ enum ConversionError: Error {
         case .invalidRadix:
             String(localized: "Invalid base, please check your base.")
         case .invalidNumber:
-            String(localized: "Invalid number for the selected base, please check your number.")
+            String(localized: "Invalid number/character for the selected base, please check your number/character.")
         case .unexpectedError:
             String(localized: "An unexpected error occurred, please try again.")
         }

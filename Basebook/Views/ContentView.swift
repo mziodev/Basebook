@@ -12,9 +12,9 @@ struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.colorScheme) var colorScheme
     
-    @State private var inputNumber: String = ""
-    @State private var selectedRadix: Radix = .decimal
-    @State private var radixConversions: [RadixConversion] = []
+    @State var radixConversionSet = RadixConversionSet()
+    
+    @State private var showingHistory: Bool = false
     @State private var showingConversionAlert: Bool = false
     
     @State private var alertMessage: String = ""
@@ -36,32 +36,32 @@ struct ContentView: View {
     }
     
     private var isZeroInputNumber: Bool {
-        inputNumber == "0" || inputNumber.isEmpty
+        radixConversionSet.inputNumber == "0" || radixConversionSet.inputNumber.isEmpty
     }
     
     var body: some View {
         NavigationStack {
             VStack {
                 VStack(alignment: .trailing) {
-                    TextField("0", text: $inputNumber)
+                    TextField("0", text: $radixConversionSet.inputNumber)
                         .multilineTextAlignment(.trailing)
                         .font(.system(size: 60))
                         .fontDesign(.rounded)
                         .focused($isTextFieldFocused)
-                        .keyboardType(selectedRadix.keyboardType)
+                        .keyboardType(radixConversionSet.selectedRadix.keyboardType)
                         .textInputAutocapitalization(.never)
                     
-                    Text("\(selectedRadix.localizedName) base")
+                    Text("\(radixConversionSet.selectedRadix.localizedName) base")
                         .font(.callout.smallCaps())
                         .foregroundStyle(.accent)
                     
-                    Picker("Select a base", selection: $selectedRadix) {
+                    Picker("Select a base", selection: $radixConversionSet.selectedRadix) {
                         ForEach(Radix.allCases, id: \.self) {
                             Text($0.numberName)
                         }
                     }
                     .pickerStyle(.palette)
-                    .onChange(of: selectedRadix) { oldvalue, newValue in
+                    .onChange(of: radixConversionSet.selectedRadix) { oldvalue, newValue in
                         handleRadixChange(
                             oldValue: oldvalue,
                             newValue: newValue
@@ -96,12 +96,12 @@ struct ContentView: View {
                 .padding([.top, .horizontal])
                 
                 List {
-                    if !radixConversions.isEmpty {
+                    if !radixConversionSet.radixConversions.isEmpty {
                         Section {
-                            ForEach(radixConversions, id:\.radix) { radixConversion in
+                            ForEach(radixConversionSet.radixConversions, id:\.radix) { radixConversion in
                                 ListRow(
                                     currentRadix: radixConversion.radix,
-                                    selectedRadix: selectedRadix,
+                                    selectedRadix: radixConversionSet.selectedRadix,
                                     value: radixConversion.value
                                 )
                                 .listRowBackground(Color.clear)
@@ -117,7 +117,7 @@ struct ContentView: View {
                 .scrollIndicators(.hidden)
                 .padding(.bottom)
                 .overlay {
-                    if radixConversions.isEmpty {
+                    if radixConversionSet.radixConversions.isEmpty {
                         EmptyRadixConversions()
                     }
                 }
@@ -125,6 +125,12 @@ struct ContentView: View {
             .edgesIgnoringSafeArea(.bottom)
             .navigationTitle("Basebook")
             .background(backgroundGradient)
+            .sheet(isPresented: $showingHistory) {
+                HistoryList(
+                    radixConversionSet: $radixConversionSet
+                )
+                .presentationDetents([.medium, .large])
+            }
             .alert(
                 "Warning!",
                 isPresented: $showingConversionAlert,
@@ -137,7 +143,7 @@ struct ContentView: View {
                         "History",
                         systemImage: "clock.arrow.trianglehead.counterclockwise.rotate.90"
                     ) {
-                        // show history
+                        showingHistory = true
                     }
                 }
             }
@@ -146,14 +152,12 @@ struct ContentView: View {
     
     private func clearTextField() {
         withAnimation {
-            inputNumber = ""
-            radixConversions = []
+            radixConversionSet.inputNumber = ""
+            radixConversionSet.radixConversions = []
         }
     }
     
     private func handleRadixChange(oldValue: Radix, newValue: Radix) {
-        clearTextField()
-
         if isTextFieldFocused {
             if newValue.keyboardType != oldValue.keyboardType {
                 isTextFieldFocused = false
@@ -174,19 +178,27 @@ struct ContentView: View {
             return
         }
         
-        if !radixConversions.isEmpty {
-            radixConversions.removeAll(keepingCapacity: true)
+        if !radixConversionSet.radixConversions.isEmpty {
+            radixConversionSet.radixConversions.removeAll(keepingCapacity: true)
         }
         
         do {
             let decimalInputNumber = try RadixConverter.convert(
-                inputNumber,
-                from: selectedRadix.value
+                radixConversionSet.inputNumber,
+                from: radixConversionSet.selectedRadix.value
             )
             
-            radixConversions = ConversionsViewModel.getConversionSet(
+            radixConversionSet.radixConversions = ConversionsViewModel.getConversionSet(
                 for: decimalInputNumber
             )
+            
+            let newRadixConversionSet = RadixConversionSet(
+                inputNumber: radixConversionSet.inputNumber,
+                selectedRadix: radixConversionSet.selectedRadix,
+                radixConversions: radixConversionSet.radixConversions
+            )
+            
+            modelContext.insert(newRadixConversionSet)
             
             isTextFieldFocused = false
         } catch let error as ConversionError {
@@ -203,4 +215,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .modelContainer(SampleData.shared.modelContainer)
 }
