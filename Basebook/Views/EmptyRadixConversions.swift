@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct EmptyRadixConversions: View {
+    @Environment(\.colorScheme) private var colorScheme
+    
+    private var basebookBackgroundImage: String {
+        colorScheme == .light ? "BasebookLogoBackgroundLight" : "BasebookLogoBackgroundDark"
+    }
+    
     var body: some View {
         VStack(spacing: 10) {
-            Image("BasebookLogoBackground")
+            Image(basebookBackgroundImage)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 220)

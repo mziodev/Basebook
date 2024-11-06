@@ -15,6 +15,8 @@ struct ContentView: View {
     @State var radixConversionSet = RadixConversionSet()
     
     @State private var showingHistory: Bool = false
+    @State private var showingWhatsNew: Bool = false
+    @State private var showingSupport: Bool = false
     @State private var showingConversionAlert: Bool = false
     
     @State private var alertMessage: String = ""
@@ -131,6 +133,12 @@ struct ContentView: View {
                 )
                 .presentationDetents([.medium, .large])
             }
+            .sheet(isPresented: $showingWhatsNew) {
+                WhatsNew()
+            }
+            .sheet(isPresented: $showingSupport) {
+                Support()
+            }
             .alert(
                 "Warning!",
                 isPresented: $showingConversionAlert,
@@ -144,6 +152,26 @@ struct ContentView: View {
                         systemImage: "clock.arrow.trianglehead.counterclockwise.rotate.90"
                     ) {
                         showingHistory = true
+                    }
+                }
+                
+                ToolbarItem(placement: .secondaryAction) {
+                    Button(action: showWhatsNew) {
+                        Label("What's New", systemImage: "sparkles")
+                    }
+
+                }
+                
+                ToolbarItem(placement: .secondaryAction) {
+                    Button(action: showSupport) {
+                        Label("Support", systemImage: "envelope.fill")
+                    }
+
+                }
+                
+                ToolbarItem(placement: .secondaryAction) {
+                    Button(action: showAppStoreRating) {
+                        Label("Rate this app", systemImage: "star.fill")
                     }
                 }
             }
@@ -188,7 +216,7 @@ struct ContentView: View {
                 from: radixConversionSet.selectedRadix.value
             )
             
-            radixConversionSet.radixConversions = ConversionsViewModel.getConversionSet(
+            radixConversionSet.radixConversions = ConversionsViewModel.calculateRadixConversions(
                 for: decimalInputNumber
             )
             
@@ -209,6 +237,26 @@ struct ContentView: View {
             showingConversionAlert = true
             
             return
+        }
+    }
+    
+    private func showWhatsNew() {
+        showingWhatsNew = true
+    }
+    
+    private func showSupport() {
+        showingSupport = true
+    }
+    
+    private func showAppStoreRating() {
+        let url = BasebookURL.writeReview
+        
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(
+                url,
+                options: [:],
+                completionHandler: nil
+            )
         }
     }
 }

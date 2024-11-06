@@ -17,6 +17,9 @@
         }
       }
     },
+    "©2024 Mauricio Del Solar (MZiO)" : {
+
+    },
     "0" : {
       "localizations" : {
         "es" : {
@@ -32,6 +35,9 @@
           }
         }
       }
+    },
+    "About Pets" : {
+
     },
     "An unexpected error occurred, please try again." : {
       "localizations" : {
@@ -114,6 +120,9 @@
         }
       }
     },
+    "Build number:" : {
+
+    },
     "Clear" : {
       "localizations" : {
         "es" : {
@@ -145,6 +154,9 @@
           }
         }
       }
+    },
+    "Contact Us" : {
+
     },
     "Conversions" : {
       "localizations" : {
@@ -212,6 +224,9 @@
         }
       }
     },
+    "Every conversion operation is saved in a history store, so you can always go back and check them out!." : {
+
+    },
     "From %@ base" : {
       "localizations" : {
         "es" : {
@@ -227,6 +242,9 @@
           }
         }
       }
+    },
+    "Gorgeous and easy to use UI with light and dark mode support." : {
+
     },
     "Hexadecimal" : {
       "comment" : "Feminine version of Hexadecimal",
@@ -292,6 +310,9 @@
           }
         }
       }
+    },
+    "mziodev@gmail.com" : {
+
     },
     "Nonary" : {
       "comment" : "Feminine version of Nonary",
@@ -359,6 +380,12 @@
         }
       }
     },
+    "Policies" : {
+
+    },
+    "Privacy Policy" : {
+
+    },
     "Quaternary" : {
       "comment" : "Feminine version of Quaternary",
       "localizations" : {
@@ -392,6 +419,12 @@
           }
         }
       }
+    },
+    "Rate this app" : {
+
+    },
+    "Report a problem or just send us some feedback." : {
+
     },
     "Select a base" : {
       "localizations" : {
@@ -442,6 +475,15 @@
         }
       }
     },
+    "Support" : {
+
+    },
+    "Support for the most used bases: Binary, Trinary, Quaternary, Quinary, Senary, Octal, Nonary, Hexadecimal, Duodecimal, and Hexadecimal." : {
+
+    },
+    "Terms of Service (EULA)" : {
+
+    },
     "Ternary" : {
       "comment" : "Feminine version of Ternary",
       "localizations" : {
@@ -458,6 +500,12 @@
           }
         }
       }
+    },
+    "Version 1.0" : {
+
+    },
+    "Version number:" : {
+
     },
     "Warning" : {
       "localizations" : {
@@ -490,6 +538,9 @@
           }
         }
       }
+    },
+    "What's New" : {
+
     },
     "Zero is zero in all bases, just try another one." : {
       "localizations" : {
