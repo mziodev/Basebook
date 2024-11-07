@@ -9,25 +9,6 @@ import SwiftUI
 
 struct Support: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.colorScheme) private var colorScheme
-    
-    private var viewBackgroundGradient: Gradient {
-        if colorScheme == .dark {
-            Gradient(
-                colors: [
-                    .bbForestGreen.opacity(0.5),
-                    .bbForestGreen.opacity(0.2)
-                ]
-            )
-        } else {
-            Gradient(
-                colors: [
-                    .bbForestGreen.opacity(0.2),
-                    .bbForestGreen.opacity(0.5)
-                ]
-            )
-        }
-    }
     
     let appVersionNumber = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
     let appBuildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
@@ -93,7 +74,7 @@ struct Support: View {
                     }
                 }
             }
-            .background(viewBackgroundGradient)
+            .secondaryGradientBackground()
             .navigationTitle("Support")
             .toolbar {
                 ToolbarItem {

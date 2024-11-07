@@ -103,6 +103,12 @@
         }
       }
     },
+    "Basebook save every operation on Conversion History so you can come back to them later." : {
+
+    },
+    "Bases included: Binary, Trinary, Quaternary, Quinary, Senary, Octal, Nonary, Decimal, Duodecimal and Hexadecimal." : {
+
+    },
     "Binary" : {
       "comment" : "Feminine version of Binary",
       "localizations" : {
@@ -156,6 +162,9 @@
       }
     },
     "Contact Us" : {
+
+    },
+    "Continue" : {
 
     },
     "Conversions" : {
@@ -278,6 +287,9 @@
           }
         }
       }
+    },
+    "Includes the 10 most used bases" : {
+
     },
     "Invalid base, please check your base." : {
       "localizations" : {
@@ -426,6 +438,9 @@
     "Report a problem or just send us some feedback." : {
 
     },
+    "Save all your conversions" : {
+
+    },
     "Select a base" : {
       "localizations" : {
         "es" : {
@@ -441,6 +456,9 @@
           }
         }
       }
+    },
+    "Select a base, enter a number and convert it to any other base. It's just that simple!" : {
+
     },
     "Select a base, tap on the big zero and introduce a number to convert :)" : {
       "localizations" : {
@@ -479,6 +497,9 @@
 
     },
     "Support for the most used bases: Binary, Trinary, Quaternary, Quinary, Senary, Octal, Nonary, Hexadecimal, Duodecimal, and Hexadecimal." : {
+
+    },
+    "Take control of you conversions" : {
 
     },
     "Terms of Service (EULA)" : {
@@ -538,6 +559,9 @@
           }
         }
       }
+    },
+    "Welcome to Basebook" : {
+
     },
     "What's New" : {
 

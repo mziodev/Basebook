@@ -9,25 +9,6 @@ import SwiftUI
 
 struct WhatsNew: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.colorScheme) private var colorScheme
-    
-    private var viewBackgroundGradient: Gradient {
-        if colorScheme == .dark {
-            Gradient(
-                colors: [
-                    .bbForestGreen.opacity(0.5),
-                    .bbForestGreen.opacity(0.2)
-                ]
-            )
-        } else {
-            Gradient(
-                colors: [
-                    .bbForestGreen.opacity(0.2),
-                    .bbForestGreen.opacity(0.5)
-                ]
-            )
-        }
-    }
     
     var body: some View {
         NavigationStack {
@@ -54,7 +35,7 @@ struct WhatsNew: View {
             }
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
-            .background(viewBackgroundGradient)
+            .secondaryGradientBackground()
             .navigationTitle("What's New")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {

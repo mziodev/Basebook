@@ -11,7 +11,7 @@ class BasebookURL {
     static let email = URL(string: "mailto:mziodev@gmail.com")!
     
     static let privacyPolicy = URL(
-        string: "https://mziodev.github.io/Apps/Basebook/"
+        string: "https://mziodev.github.io/apps/Basebook/privacy-policy.html"
     )!
     
     static let termsOfUse = URL(

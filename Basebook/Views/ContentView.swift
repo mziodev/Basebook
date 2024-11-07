@@ -9,8 +9,9 @@ import SwiftData
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("FirstStart") private var isFirstLaunch: Bool = true
+    
     @Environment(\.modelContext) var modelContext
-    @Environment(\.colorScheme) var colorScheme
     
     @State var radixConversionSet = RadixConversionSet()
     
@@ -22,20 +23,6 @@ struct ContentView: View {
     @State private var alertMessage: String = ""
     
     @FocusState private var isTextFieldFocused: Bool
-    
-    private let lightGradient = Gradient(colors: [
-        Color.bbPersian.opacity(0.5),
-        Color.bbForestGreen.opacity(0.5),
-    ])
-    
-    private let darkGradient = Gradient(colors: [
-        Color.bbPersian.opacity(0.4),
-        Color.bbForestGreen.opacity(0.5),
-    ])
-    
-    private var backgroundGradient: Gradient {
-        colorScheme == .dark ? darkGradient : lightGradient
-    }
     
     private var isZeroInputNumber: Bool {
         radixConversionSet.inputNumber == "0" || radixConversionSet.inputNumber.isEmpty
@@ -124,9 +111,12 @@ struct ContentView: View {
                     }
                 }
             }
+            .primaryGradientBackground()
             .edgesIgnoringSafeArea(.bottom)
             .navigationTitle("Basebook")
-            .background(backgroundGradient)
+            .sheet(isPresented: $isFirstLaunch) {
+                Welcome(isFirstLaunch: $isFirstLaunch)
+            }
             .sheet(isPresented: $showingHistory) {
                 HistoryList(
                     radixConversionSet: $radixConversionSet
@@ -159,14 +149,14 @@ struct ContentView: View {
                     Button(action: showWhatsNew) {
                         Label("What's New", systemImage: "sparkles")
                     }
-
+                    
                 }
                 
                 ToolbarItem(placement: .secondaryAction) {
                     Button(action: showSupport) {
                         Label("Support", systemImage: "envelope.fill")
                     }
-
+                    
                 }
                 
                 ToolbarItem(placement: .secondaryAction) {
