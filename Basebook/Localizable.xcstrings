@@ -18,7 +18,20 @@
       }
     },
     "©2024 Mauricio Del Solar (MZiO)" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "©2024 Mauricio Del Solar (MZiO)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "©2024 Mauricio Del Solar (MZiO)"
+          }
+        }
+      }
     },
     "0" : {
       "localizations" : {
@@ -36,8 +49,21 @@
         }
       }
     },
-    "About Pets" : {
-
+    "About Basebook" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de Basebook"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos de Basebook"
+          }
+        }
+      }
     },
     "An unexpected error occurred, please try again." : {
       "localizations" : {
@@ -104,10 +130,36 @@
       }
     },
     "Basebook save every operation on Conversion History so you can come back to them later." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basebook guarda cada operación en el Historial de Conversión para que puedas volver a ellas más tarde."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basebook enregistre chaque opération dans l'historique des conversions afin que vous puissiez y revenir plus tard."
+          }
+        }
+      }
     },
     "Bases included: Binary, Trinary, Quaternary, Quinary, Senary, Octal, Nonary, Decimal, Duodecimal and Hexadecimal." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bases incluidas: Binaria, Trinaria, Cuaternaria, Quinaria, Senaria, Octal, Nonaria, Decimal, Duodecimal y Hexadecimal."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bases incluses : Binaire, Trinaire, Quaternaire, Quinaire, Sénaire, Octale, Nonaire, Décimale, Duodécimale et Hexadécimale."
+          }
+        }
+      }
     },
     "Binary" : {
       "comment" : "Feminine version of Binary",
@@ -127,7 +179,20 @@
       }
     },
     "Build number:" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Número de compilación:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numéro de build :"
+          }
+        }
+      }
     },
     "Clear" : {
       "localizations" : {
@@ -162,10 +227,36 @@
       }
     },
     "Contact Us" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacta con nosotros"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contactez-nous"
+          }
+        }
+      }
     },
     "Continue" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
+          }
+        }
+      }
     },
     "Conversions" : {
       "localizations" : {
@@ -234,7 +325,20 @@
       }
     },
     "Every conversion operation is saved in a history store, so you can always go back and check them out!." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cada operación de conversión se guarda en un almacén de historial, por lo que siempre puedes volver atrás y consultarlas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaque opération de conversion est enregistrée dans un historique, vous pouvez donc toujours y revenir et les consulter !"
+          }
+        }
+      }
     },
     "From %@ base" : {
       "localizations" : {
@@ -253,7 +357,20 @@
       }
     },
     "Gorgeous and easy to use UI with light and dark mode support." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interfaz de usuario magnífica y fácil de usar con soporte para modo claro y oscuro."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interface utilisateur magnifique et facile à utiliser avec prise en charge des modes clair et sombre."
+          }
+        }
+      }
     },
     "Hexadecimal" : {
       "comment" : "Feminine version of Hexadecimal",
@@ -289,7 +406,20 @@
       }
     },
     "Includes the 10 most used bases" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incluye las 10 bases más utilizadas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprend les 10 bases les plus utilisées"
+          }
+        }
+      }
     },
     "Invalid base, please check your base." : {
       "localizations" : {
@@ -324,7 +454,20 @@
       }
     },
     "mziodev@gmail.com" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mziodev@gmail.com"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mziodev@gmail.com"
+          }
+        }
+      }
     },
     "Nonary" : {
       "comment" : "Feminine version of Nonary",
@@ -393,10 +536,36 @@
       }
     },
     "Policies" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Políticas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Politiques"
+          }
+        }
+      }
     },
     "Privacy Policy" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Politica de Privacidad"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "politique de confidentialité"
+          }
+        }
+      }
     },
     "Quaternary" : {
       "comment" : "Feminine version of Quaternary",
@@ -433,13 +602,52 @@
       }
     },
     "Rate this app" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Califica esta aplicación"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Évaluez cette application"
+          }
+        }
+      }
     },
     "Report a problem or just send us some feedback." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reporta un problema o simplemente envíanos tus comentarios."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rapportez un problème ou envoyez-nous simplement des commentaires."
+          }
+        }
+      }
     },
     "Save all your conversions" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guarda todas tus conversiones"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrez toutes vos conversions"
+          }
+        }
+      }
     },
     "Select a base" : {
       "localizations" : {
@@ -458,7 +666,20 @@
       }
     },
     "Select a base, enter a number and convert it to any other base. It's just that simple!" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona una base, introduce un número y conviértelo a cualquier otra base. ¡Es así de simple!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionnez une base, saisissez un nombre et convertissez-le dans n'importe quelle autre base. C'est aussi simple que cela !"
+          }
+        }
+      }
     },
     "Select a base, tap on the big zero and introduce a number to convert :)" : {
       "localizations" : {
@@ -494,16 +715,68 @@
       }
     },
     "Support" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soporte"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support"
+          }
+        }
+      }
     },
-    "Support for the most used bases: Binary, Trinary, Quaternary, Quinary, Senary, Octal, Nonary, Hexadecimal, Duodecimal, and Hexadecimal." : {
-
+    "Support for the most used bases: Binary, Trinary, Quaternary, Quinary, Senary, Octal, Nonary, Decimal, Duodecimal, and Hexadecimal." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soporte para las bases más utilizadas: Binario, Trinario, Cuaternario, Quinario, Senario, Octal, Nonario, Decimal, Duodecimal y Hexadecimal."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prise en charge des bases les plus utilisées : Binaire, Trinaire, Quaternaire, Quinaire, Sénaire, Octale, Nonaire, Décimale, Duodécimale et Hexadécimale."
+          }
+        }
+      }
     },
     "Take control of you conversions" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toma el control de tus conversiones"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prenez le contrôle de vos conversions"
+          }
+        }
+      }
     },
     "Terms of Service (EULA)" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condiciones de servicio (EULA)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conditions d'utilisation (CLUF)"
+          }
+        }
+      }
     },
     "Ternary" : {
       "comment" : "Feminine version of Ternary",
@@ -523,10 +796,36 @@
       }
     },
     "Version 1.0" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión 1.0"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version 1.0"
+          }
+        }
+      }
     },
     "Version number:" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Número de versión:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numéro de version :"
+          }
+        }
+      }
     },
     "Warning" : {
       "localizations" : {
@@ -561,10 +860,36 @@
       }
     },
     "Welcome to Basebook" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Te damos la bienvenida a Basebook"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenue sur Basebook"
+          }
+        }
+      }
     },
     "What's New" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Novedades"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouveautés"
+          }
+        }
+      }
     },
     "Zero is zero in all bases, just try another one." : {
       "localizations" : {

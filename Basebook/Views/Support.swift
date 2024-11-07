@@ -44,7 +44,7 @@ struct Support: View {
                         )
                     }
                     
-                    Section("About Pets") {
+                    Section("About Basebook") {
                         AppInfo(
                             text: String(localized: "Version number:"),
                             number: appVersionNumber

@@ -22,7 +22,7 @@ struct WhatsNew: View {
                     
                     UpdateView(
                         text: String(
-                            localized: "Support for the most used bases: Binary, Trinary, Quaternary, Quinary, Senary, Octal, Nonary, Hexadecimal, Duodecimal, and Hexadecimal."
+                            localized: "Support for the most used bases: Binary, Trinary, Quaternary, Quinary, Senary, Octal, Nonary, Decimal, Duodecimal, and Hexadecimal."
                         )
                     )
                     
