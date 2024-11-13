@@ -28,12 +28,7 @@ struct HistoryList: View {
                     HistoryListRow(radixConversionSet: radixConversionSet)
                         .listRowBackground(Color.clear)
                         .onTapGesture {
-                            self.radixConversionSet = RadixConversionSet(
-                                inputNumber: radixConversionSet.inputNumber,
-                                selectedRadix: radixConversionSet.selectedRadix,
-                                radixConversions: radixConversionSet.radixConversions
-                            )
-                            dismiss()
+                            selectRadixConversionSet()
                         }
                 }
                 .onDelete(perform: deleteItem)
@@ -41,14 +36,7 @@ struct HistoryList: View {
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
             .scrollIndicators(.hidden)
-            .background(
-                Gradient(
-                    colors: [
-                        Color.bbForestGreen.opacity(0.2),
-                        Color.bbForestGreen.opacity(0.6)
-                    ]
-                )
-            )
+            .secondaryGradientBackground()
             .navigationTitle("History")
             .alert(
                 "Warning",
@@ -81,6 +69,16 @@ struct HistoryList: View {
             .toolbarBackground(.ultraThinMaterial, for: .bottomBar)
             .toolbarBackground(.visible, for: .bottomBar)
         }
+    }
+    
+    private func selectRadixConversionSet() {
+        radixConversionSet = RadixConversionSet(
+            inputNumber: radixConversionSet.inputNumber,
+            selectedRadix: radixConversionSet.selectedRadix,
+            radixConversions: radixConversionSet.radixConversions
+        )
+        
+        dismiss()
     }
     
     private func dismissView() {

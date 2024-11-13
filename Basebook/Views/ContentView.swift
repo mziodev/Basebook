@@ -15,7 +15,7 @@ struct ContentView: View {
     
     @State var radixConversionSet = RadixConversionSet()
     
-    @State private var showingHistory: Bool = false
+    @State private var showingHistoryList: Bool = false
     @State private var showingWhatsNew: Bool = false
     @State private var showingSupport: Bool = false
     @State private var showingConversionAlert: Bool = false
@@ -79,7 +79,7 @@ struct ContentView: View {
             .sheet(isPresented: $isFirstLaunch) {
                 Welcome(isFirstLaunch: $isFirstLaunch)
             }
-            .sheet(isPresented: $showingHistory) {
+            .sheet(isPresented: $showingHistoryList) {
                 HistoryList(
                     radixConversionSet: $radixConversionSet
                 )
@@ -99,11 +99,8 @@ struct ContentView: View {
             )
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(
-                        "History",
-                        systemImage: "clock.arrow.trianglehead.counterclockwise.rotate.90"
-                    ) {
-                        showingHistory = true
+                    Button(action: showHistoryList) {
+                        Label("History", systemImage: "clock.arrow.trianglehead.counterclockwise.rotate.90")
                     }
                 }
                 
@@ -157,6 +154,10 @@ struct ContentView: View {
         modelContext.insert(newRadixConversionSet)
         
         isTextFieldFocused = false
+    }
+    
+    private func showHistoryList() {
+        showingHistoryList = true
     }
     
     private func showWhatsNew() {
