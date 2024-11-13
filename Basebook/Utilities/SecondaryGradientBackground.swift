@@ -10,17 +10,17 @@ import SwiftUI
 struct SecondaryGradientBackground: ViewModifier {
     @Environment(\.colorScheme) private var colorScheme
     
-    private let darkModeGradient = Gradient(
-        colors: [
-            .bbForestGreen.opacity(0.5),
-            .bbForestGreen.opacity(0.2)
-        ]
-    )
-    
     private let lightModeGradient = Gradient(
         colors: [
             .bbForestGreen.opacity(0.2),
             .bbForestGreen.opacity(0.5)
+        ]
+    )
+    
+    private let darkModeGradient = Gradient(
+        colors: [
+            .bbForestGreen.opacity(0.5),
+            .bbForestGreen.opacity(0.2)
         ]
     )
     

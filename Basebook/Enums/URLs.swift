@@ -7,6 +7,7 @@
 
 import Foundation
 
+// namespace semantic enum (named in plural)
 enum URLs {
     static let email = URL(string: "mailto:mziodev@gmail.com")!
     

@@ -206,9 +206,8 @@ struct ContentView: View {
                 from: radixConversionSet.selectedRadix.value
             )
             
-            radixConversionSet.radixConversions = ConversionsViewModel.calculateRadixConversions(
-                for: decimalInputNumber
-            )
+            radixConversionSet.radixConversions = RadixConversionUtilities
+                .calculateRadixConversions(for: decimalInputNumber)
             
             let newRadixConversionSet = RadixConversionSet(
                 inputNumber: radixConversionSet.inputNumber,

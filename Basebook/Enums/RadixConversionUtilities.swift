@@ -1,13 +1,14 @@
 //
-//  ConversionsViewModel.swift
+//  RadixConversionUtilities.swift
 //  Basebook
 //
-//  Created by MZiO on 29/10/24.
+//  Created by MZiO on 13/11/24.
 //
 
 import Foundation
 
-class ConversionsViewModel {
+// namespace semantic enum (named in plural)
+enum RadixConversionUtilities {
     static func calculateRadixConversions(for number: Int) -> [RadixConversion] {
         var radixConversions: [RadixConversion] = []
         
