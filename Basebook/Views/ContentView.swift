@@ -70,7 +70,7 @@ struct ContentView: View {
                         
                         Button("Convert") {
                             withAnimation {
-                                fillRadixConversionSet()
+                                processRadixConversionSet()
                             }
                         }
                         .frame(width: 100, height: 33)
@@ -188,45 +188,26 @@ struct ContentView: View {
         }
     }
     
-    private func fillRadixConversionSet() {
-        if isZeroInputNumber {
-            alertMessage = ConversionError.zeroNumber.localizedDescription
-            showingConversionAlert = true
-            
-            return
-        }
+    private func processRadixConversionSet() {
         
-        if !radixConversionSet.radixConversions.isEmpty {
-            radixConversionSet.radixConversions.removeAll(keepingCapacity: true)
-        }
-        
-        do {
-            let decimalInputNumber = try RadixConverter.convert(
-                radixConversionSet.inputNumber,
-                from: radixConversionSet.selectedRadix.value
-            )
+        if let error = try? radixConversionSet
+            .loadRadixConversions(from: radixConversionSet.inputNumber) {
             
-            radixConversionSet.radixConversions = RadixConversionUtilities
-                .calculateRadixConversions(for: decimalInputNumber)
-            
-            let newRadixConversionSet = RadixConversionSet(
-                inputNumber: radixConversionSet.inputNumber,
-                selectedRadix: radixConversionSet.selectedRadix,
-                radixConversions: radixConversionSet.radixConversions
-            )
-            
-            modelContext.insert(newRadixConversionSet)
-            
-            isTextFieldFocused = false
-        } catch let error as ConversionError {
             alertMessage = error.localizedDescription
             showingConversionAlert = true
-        } catch {
-            alertMessage = ConversionError.unexpectedError.localizedDescription
-            showingConversionAlert = true
             
             return
         }
+        
+        let newRadixConversionSet = RadixConversionSet(
+            inputNumber: radixConversionSet.inputNumber,
+            selectedRadix: radixConversionSet.selectedRadix,
+            radixConversions: radixConversionSet.radixConversions
+        )
+        
+        modelContext.insert(newRadixConversionSet)
+        
+        isTextFieldFocused = false
     }
     
     private func showWhatsNew() {
