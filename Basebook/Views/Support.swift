@@ -18,10 +18,7 @@ struct Support: View {
             VStack {
                 List {
                     Section {
-                        Link(
-                            "mziodev@gmail.com",
-                            destination: URLs.email
-                        )
+                        Link("mziodev@gmail.com", destination: URLs.email)
                     } header: {
                         Text("Contact Us")
                     } footer: {
@@ -33,45 +30,26 @@ struct Support: View {
                     }
                     
                     Section("Policies") {
-                        Link(
-                            "Privacy Policy",
-                            destination: URLs.privacyPolicy
-                        )
+                        Link("Privacy Policy", destination: URLs.privacyPolicy)
                         
-                        Link(
-                            "Terms of Service (EULA)",
-                            destination: URLs.termsOfUse
-                        )
+                        Link("Terms of Service (EULA)", destination: URLs.termsOfUse)
                     }
                     
                     Section("About Basebook") {
-                        AppInfo(
+                        AboutApp(
                             text: String(localized: "Version number:"),
                             number: appVersionNumber
                         )
                         
-                        AppInfo(
+                        AboutApp(
                             text: String(localized: "Build number:"),
                             number: appBuildNumber
                         )
                     }
                 }
                 .scrollContentBackground(.hidden)
-                .overlay {
-                    VStack {
-                        Spacer()
-                        
-                        HStack {
-                            Spacer()
-                            
-                            Text("©2024 Mauricio Del Solar (MZiO)")
-                                .font(.caption)
-                                .foregroundStyle(.accent)
-                            
-                            Spacer()
-                            
-                        }
-                    }
+                .overlay(alignment: .bottom) {
+                    Copyright()
                 }
             }
             .secondaryGradientBackground()
@@ -87,24 +65,38 @@ struct Support: View {
     private func dismissView() {
         dismiss()
     }
-    
-    struct AppInfo: View {
-        let text: String
-        let number: String
-        
-        var body: some View {
-            HStack(spacing: 10) {
-                Text(text)
-                
-                Text(number)
-                    .fontDesign(.rounded)
-                    .bold()
-                    .foregroundStyle(.bbForestGreen)
-            }
-        }
-    }
 }
 
 #Preview {
     Support()
+}
+
+struct AboutApp: View {
+    let text: String
+    let number: String
+    
+    var body: some View {
+        HStack(spacing: 10) {
+            Text(text)
+            
+            Text(number)
+                .fontDesign(.rounded)
+                .bold()
+                .foregroundStyle(.bbForestGreen)
+        }
+    }
+}
+
+struct Copyright: View {
+    var body: some View {
+        HStack {
+            Spacer()
+            
+            Text("©2024 Mauricio Del Solar (MZiO)")
+                .font(.caption)
+                .foregroundStyle(Color.accent)
+            
+            Spacer()
+        }
+    }
 }

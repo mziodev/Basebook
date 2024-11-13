@@ -12,13 +12,19 @@ struct ListRow: View {
     let selectedRadix: Radix
     let value: String
     
+    private var textColor: Color {
+        currentRadix == selectedRadix ? Color.accentColor : .primary
+    }
+    
+    private var textColorInverted: Color {
+        currentRadix != selectedRadix ? Color.accentColor : .primary
+    }
+    
     var body: some View {
         HStack {
             Text(currentRadix.localizedName)
                 .font(.headline)
-                .foregroundStyle(
-                    currentRadix == selectedRadix ? Color.accentColor : .primary
-                )
+                .foregroundStyle(textColor)
             
             Spacer()
             
@@ -26,16 +32,12 @@ struct ListRow: View {
                 Text(value)
                     .font(.title)
                     .fontDesign(.rounded)
-                    .foregroundStyle(
-                        currentRadix == selectedRadix ? Color.accentColor : .primary
-                    )
+                    .foregroundStyle(textColor)
                 
                 Text(currentRadix.numberName)
                     .font(.caption)
                     .fontDesign(.rounded)
-                    .foregroundStyle(
-                        currentRadix != selectedRadix ? .accent : .primary
-                    )
+                    .foregroundStyle(textColorInverted)
                 
             }
         }

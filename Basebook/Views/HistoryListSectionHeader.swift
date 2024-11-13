@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ListSectionHeader: View {
+struct HistoryListSectionHeader: View {
     let title: String
     
     var body: some View {
@@ -21,7 +21,7 @@ struct ListSectionHeader: View {
         Section {
             // section content
         } header: {
-            ListSectionHeader(title: "Conversions")
+            HistoryListSectionHeader(title: "Conversions")
         }
     }
 }

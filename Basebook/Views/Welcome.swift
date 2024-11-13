@@ -42,23 +42,15 @@ struct Welcome: View {
                 }
             }
             
-            Button("Continue", action: goToApp)
-                .font(.title3.bold())
-                .frame(maxWidth: .infinity)
-                .padding(.vertical)
-                .foregroundStyle(.white)
-                .background(
-                    .accent,
-                    in: .rect(cornerRadius: 16)
-                )
-                .padding(.horizontal)
-                .padding(.bottom)
+            ContinueButton(isFirstLaunch: $isFirstLaunch)
         }
         .padding()
         .primaryGradientBackground()
     }
-    
-    func goToApp() { isFirstLaunch = false }
+}
+
+#Preview {
+    Welcome(isFirstLaunch: .constant(true))
 }
 
 struct Feature: View {
@@ -86,6 +78,19 @@ struct Feature: View {
     }
 }
 
-#Preview {
-    Welcome(isFirstLaunch: .constant(true))
+struct ContinueButton: View {
+    @Binding var isFirstLaunch: Bool
+    
+    var body: some View {
+        Button("Continue", action: continueToApp)
+            .font(.title3.bold())
+            .frame(maxWidth: .infinity)
+            .padding(.vertical)
+            .foregroundStyle(.white)
+            .background(.accent, in: .rect(cornerRadius: 12))
+            .padding(.horizontal)
+            .padding(.bottom)
+    }
+    
+    private func continueToApp() { isFirstLaunch = false }
 }

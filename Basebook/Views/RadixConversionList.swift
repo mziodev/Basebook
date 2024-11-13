@@ -26,7 +26,7 @@ struct RadixConversionList: View {
                         .listRowBackground(Color.clear)
                     }
                 } header: {
-                    ListSectionHeader(
+                    HistoryListSectionHeader(
                         title: String(localized: "Conversions")
                     )
                 }
