@@ -24,14 +24,10 @@ struct ContentView: View {
     
     @FocusState private var isTextFieldFocused: Bool
     
-    private var isZeroInputNumber: Bool {
-        radixConversionSet.inputNumber == "0" || radixConversionSet.inputNumber.isEmpty
-    }
-    
     var body: some View {
         NavigationStack {
             VStack {
-                VStack(alignment: .trailing) {
+                VStack {
                     TextField("0", text: $radixConversionSet.inputNumber)
                         .multilineTextAlignment(.trailing)
                         .font(.system(size: 60))
@@ -40,22 +36,13 @@ struct ContentView: View {
                         .keyboardType(radixConversionSet.selectedRadix.keyboardType)
                         .textInputAutocapitalization(.never)
                     
-                    Text("\(radixConversionSet.selectedRadix.localizedName) base")
-                        .font(.callout.smallCaps())
-                        .foregroundStyle(.accent)
-                    
-                    Picker("Select a base", selection: $radixConversionSet.selectedRadix) {
-                        ForEach(Radix.allCases, id: \.self) {
-                            Text($0.numberName)
-                        }
-                    }
-                    .pickerStyle(.palette)
-                    .onChange(of: radixConversionSet.selectedRadix) { oldvalue, newValue in
-                        handleRadixChange(
-                            oldValue: oldvalue,
-                            newValue: newValue
+                    RadixSelector(
+                        radixConversionSet: $radixConversionSet,
+                        isTextFieldFocused: Binding(
+                            get: { isTextFieldFocused },
+                            set: { isTextFieldFocused = $0 }
                         )
-                    }
+                    )
                     
                     HStack(spacing: 30) {
                         Spacer()
@@ -147,19 +134,6 @@ struct ContentView: View {
         withAnimation {
             radixConversionSet.inputNumber = ""
             radixConversionSet.radixConversions = []
-        }
-    }
-    
-    private func handleRadixChange(oldValue: Radix, newValue: Radix) {
-        if isTextFieldFocused {
-            if newValue.keyboardType != oldValue.keyboardType {
-                isTextFieldFocused = false
-                
-                DispatchQueue.main
-                    .asyncAfter(deadline: .now() + 0.1) {
-                        isTextFieldFocused = true
-                    }
-            }
         }
     }
     
