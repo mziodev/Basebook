@@ -8,7 +8,6 @@
 import Foundation
 
 struct RadixConverter {
-    
     static func convert(_ number: Int, to radix: Int) -> String {
         String(number, radix: radix)
     }

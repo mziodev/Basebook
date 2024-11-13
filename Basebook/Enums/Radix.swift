@@ -8,7 +8,6 @@
 import SwiftUI
 
 enum Radix: String, Codable, CaseIterable {
-    
     case binary
     case ternary
     case quaternary

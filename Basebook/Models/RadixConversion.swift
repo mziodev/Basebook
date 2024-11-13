@@ -8,7 +8,6 @@
 import Foundation
 
 struct RadixConversion: Codable {
-    
     var radix: Radix
     var value: String
 }

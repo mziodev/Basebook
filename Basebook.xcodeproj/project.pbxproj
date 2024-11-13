@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08FF5B592CE4AABA00A1F7FC /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FF5B582CE4AABA00A1F7FC /* URLs.swift */; };
 		08FFBBCC2CE3B28800588896 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08FFBBB52CE3B28800588896 /* Preview Assets.xcassets */; };
 		08FFBBCD2CE3B28800588896 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08FFBBC82CE3B28800588896 /* Assets.xcassets */; };
 		08FFBBCE2CE3B28800588896 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 08FFBBCA2CE3B28800588896 /* Localizable.xcstrings */; };
@@ -19,7 +20,6 @@
 		08FFBBD52CE3B28800588896 /* RadixConversionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFBBB12CE3B28800588896 /* RadixConversionSet.swift */; };
 		08FFBBD62CE3B28800588896 /* RadixConversionSet+SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFBBB22CE3B28800588896 /* RadixConversionSet+SampleData.swift */; };
 		08FFBBD72CE3B28800588896 /* RadixConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFBBB32CE3B28800588896 /* RadixConverter.swift */; };
-		08FFBBD82CE3B28800588896 /* BasebookURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFBBB72CE3B28800588896 /* BasebookURL.swift */; };
 		08FFBBD92CE3B28800588896 /* PrimaryGradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFBBB82CE3B28800588896 /* PrimaryGradientBackground.swift */; };
 		08FFBBDA2CE3B28800588896 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFBBB92CE3B28800588896 /* SampleData.swift */; };
 		08FFBBDB2CE3B28800588896 /* SecondaryGradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFBBBA2CE3B28800588896 /* SecondaryGradientBackground.swift */; };
@@ -51,6 +51,7 @@
 /* Begin PBXFileReference section */
 		08AFD3D02CCCF10E00564AFF /* Basebook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Basebook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08AFD3F82CCF915200564AFF /* BasebookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BasebookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		08FF5B582CE4AABA00A1F7FC /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		08FFBBA82CE3B28800588896 /* BasebookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasebookApp.swift; sourceTree = "<group>"; };
 		08FFBBAA2CE3B28800588896 /* ConversionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionError.swift; sourceTree = "<group>"; };
 		08FFBBAB2CE3B28800588896 /* Radix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radix.swift; sourceTree = "<group>"; };
@@ -61,7 +62,6 @@
 		08FFBBB22CE3B28800588896 /* RadixConversionSet+SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RadixConversionSet+SampleData.swift"; sourceTree = "<group>"; };
 		08FFBBB32CE3B28800588896 /* RadixConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadixConverter.swift; sourceTree = "<group>"; };
 		08FFBBB52CE3B28800588896 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		08FFBBB72CE3B28800588896 /* BasebookURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasebookURL.swift; sourceTree = "<group>"; };
 		08FFBBB82CE3B28800588896 /* PrimaryGradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryGradientBackground.swift; sourceTree = "<group>"; };
 		08FFBBB92CE3B28800588896 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		08FFBBBA2CE3B28800588896 /* SecondaryGradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryGradientBackground.swift; sourceTree = "<group>"; };
@@ -132,6 +132,7 @@
 			children = (
 				08FFBBAA2CE3B28800588896 /* ConversionError.swift */,
 				08FFBBAB2CE3B28800588896 /* Radix.swift */,
+				08FF5B582CE4AABA00A1F7FC /* URLs.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -140,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				08FFBBAD2CE3B28800588896 /* Date+Format.swift */,
+				08FFBBB22CE3B28800588896 /* RadixConversionSet+SampleData.swift */,
 				08FFBBAE2CE3B28800588896 /* View+Gradient.swift */,
 			);
 			path = Extensions;
@@ -150,8 +152,6 @@
 			children = (
 				08FFBBB02CE3B28800588896 /* RadixConversion.swift */,
 				08FFBBB12CE3B28800588896 /* RadixConversionSet.swift */,
-				08FFBBB22CE3B28800588896 /* RadixConversionSet+SampleData.swift */,
-				08FFBBB32CE3B28800588896 /* RadixConverter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -167,8 +167,8 @@
 		08FFBBBB2CE3B28800588896 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				08FFBBB72CE3B28800588896 /* BasebookURL.swift */,
 				08FFBBB82CE3B28800588896 /* PrimaryGradientBackground.swift */,
+				08FFBBB32CE3B28800588896 /* RadixConverter.swift */,
 				08FFBBB92CE3B28800588896 /* SampleData.swift */,
 				08FFBBBA2CE3B28800588896 /* SecondaryGradientBackground.swift */,
 			);
@@ -344,7 +344,6 @@
 				08FFBBD52CE3B28800588896 /* RadixConversionSet.swift in Sources */,
 				08FFBBD62CE3B28800588896 /* RadixConversionSet+SampleData.swift in Sources */,
 				08FFBBD72CE3B28800588896 /* RadixConverter.swift in Sources */,
-				08FFBBD82CE3B28800588896 /* BasebookURL.swift in Sources */,
 				08FFBBD92CE3B28800588896 /* PrimaryGradientBackground.swift in Sources */,
 				08FFBBDA2CE3B28800588896 /* SampleData.swift in Sources */,
 				08FFBBDB2CE3B28800588896 /* SecondaryGradientBackground.swift in Sources */,
@@ -354,6 +353,7 @@
 				08FFBBDF2CE3B28800588896 /* HistoryList.swift in Sources */,
 				08FFBBE02CE3B28800588896 /* HistoryListRow.swift in Sources */,
 				08FFBBE12CE3B28800588896 /* ListRow.swift in Sources */,
+				08FF5B592CE4AABA00A1F7FC /* URLs.swift in Sources */,
 				08FFBBE22CE3B28800588896 /* ListSectionHeader.swift in Sources */,
 				08FFBBE32CE3B28800588896 /* Support.swift in Sources */,
 				08FFBBE42CE3B28800588896 /* Welcome.swift in Sources */,

@@ -8,9 +8,7 @@
 import Foundation
 
 class ConversionsViewModel {
-    
     static func calculateRadixConversions(for number: Int) -> [RadixConversion] {
-        
         var radixConversions: [RadixConversion] = []
         
         Radix.allCases.forEach { radix in

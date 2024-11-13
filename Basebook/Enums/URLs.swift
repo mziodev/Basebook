@@ -1,13 +1,13 @@
 //
-//  URL.swift
+//  URLs.swift
 //  Basebook
 //
-//  Created by MZiO on 6/11/24.
+//  Created by MZiO on 13/11/24.
 //
 
 import Foundation
 
-class BasebookURL {
+enum URLs {
     static let email = URL(string: "mailto:mziodev@gmail.com")!
     
     static let privacyPolicy = URL(
