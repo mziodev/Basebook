@@ -52,7 +52,7 @@ class SampleData {
         }
     }
     
-    var conversionSet: RadixConversionSet {
+    var radixConversionSet: RadixConversionSet {
         RadixConversionSet.sampleData[0]
     }
 }

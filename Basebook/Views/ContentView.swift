@@ -84,32 +84,7 @@ struct ContentView: View {
                 }
                 .padding([.top, .horizontal])
                 
-                List {
-                    if !radixConversionSet.radixConversions.isEmpty {
-                        Section {
-                            ForEach(radixConversionSet.radixConversions, id:\.radix) { radixConversion in
-                                ListRow(
-                                    currentRadix: radixConversion.radix,
-                                    selectedRadix: radixConversionSet.selectedRadix,
-                                    value: radixConversion.value
-                                )
-                                .listRowBackground(Color.clear)
-                            }
-                        } header: {
-                            ListSectionHeader(
-                                title: String(localized: "Conversions")
-                            )
-                        }
-                    }
-                }
-                .scrollContentBackground(.hidden)
-                .scrollIndicators(.hidden)
-                .padding(.bottom)
-                .overlay {
-                    if radixConversionSet.radixConversions.isEmpty {
-                        EmptyRadixConversions()
-                    }
-                }
+                RadixConversionList(radixConversionSet: radixConversionSet)
             }
             .primaryGradientBackground()
             .edgesIgnoringSafeArea(.bottom)

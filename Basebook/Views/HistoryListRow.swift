@@ -34,6 +34,6 @@ struct HistoryListRow: View {
 
 #Preview {
     List {
-        HistoryListRow(radixConversionSet: SampleData.shared.conversionSet)
+        HistoryListRow(radixConversionSet: SampleData.shared.radixConversionSet)
     }
 }

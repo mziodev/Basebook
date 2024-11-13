@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EmptyRadixConversions: View {
+struct RadixConversionListEmpty: View {
     @Environment(\.colorScheme) private var colorScheme
     
     private var basebookBackgroundImage: String {
@@ -32,5 +32,5 @@ struct EmptyRadixConversions: View {
 }
 
 #Preview {
-    EmptyRadixConversions()
+    RadixConversionListEmpty()
 }

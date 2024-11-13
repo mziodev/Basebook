@@ -101,6 +101,6 @@ struct HistoryList: View {
 }
 
 #Preview {
-    HistoryList(radixConversionSet: .constant(SampleData.shared.conversionSet))
+    HistoryList(radixConversionSet: .constant(SampleData.shared.radixConversionSet))
         .modelContainer(SampleData.shared.modelContainer)
 }
