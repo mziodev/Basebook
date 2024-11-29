@@ -37,7 +37,7 @@
 		08FFBBE42CE3B28800588896 /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFBBC52CE3B28800588896 /* Welcome.swift */; };
 		08FFBBE52CE3B28800588896 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFBBC62CE3B28800588896 /* WhatsNew.swift */; };
 		08FFBBEA2CE3B28E00588896 /* BasebookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFBBE62CE3B28E00588896 /* BasebookTests.swift */; };
-		08FFBBEB2CE3B28E00588896 /* ConversionsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFBBE72CE3B28E00588896 /* ConversionsViewModelTests.swift */; };
+		08FFBBEB2CE3B28E00588896 /* calculateRadixConversionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFBBE72CE3B28E00588896 /* calculateRadixConversionsTests.swift */; };
 		08FFBBEC2CE3B28E00588896 /* RadixConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFBBE82CE3B28E00588896 /* RadixConverterTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,7 +85,7 @@
 		08FFBBC92CE3B28800588896 /* Basebook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Basebook.entitlements; sourceTree = "<group>"; };
 		08FFBBCA2CE3B28800588896 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		08FFBBE62CE3B28E00588896 /* BasebookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasebookTests.swift; sourceTree = "<group>"; };
-		08FFBBE72CE3B28E00588896 /* ConversionsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionsViewModelTests.swift; sourceTree = "<group>"; };
+		08FFBBE72CE3B28E00588896 /* calculateRadixConversionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculateRadixConversionsTests.swift; sourceTree = "<group>"; };
 		08FFBBE82CE3B28E00588896 /* RadixConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadixConverterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,7 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				08FFBBE62CE3B28E00588896 /* BasebookTests.swift */,
-				08FFBBE72CE3B28E00588896 /* ConversionsViewModelTests.swift */,
+				08FFBBE72CE3B28E00588896 /* calculateRadixConversionsTests.swift */,
 				08FFBBE82CE3B28E00588896 /* RadixConverterTests.swift */,
 			);
 			path = BasebookTests;
@@ -370,7 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08FFBBEA2CE3B28E00588896 /* BasebookTests.swift in Sources */,
-				08FFBBEB2CE3B28E00588896 /* ConversionsViewModelTests.swift in Sources */,
+				08FFBBEB2CE3B28E00588896 /* calculateRadixConversionsTests.swift in Sources */,
 				08FFBBEC2CE3B28E00588896 /* RadixConverterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
