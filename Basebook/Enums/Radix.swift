@@ -7,6 +7,34 @@
 
 import SwiftUI
 
+/// An enumeration representing different number radices (bases) used in
+/// numeral systems.
+///
+/// This enum conforms to `String`, `Codable`, and `CaseIterable`, allowing it
+/// to represent various bases from binary (base 2) to hexadecimal (base 16).
+/// Each case corresponds to a specific radix and provides additional properties
+/// to facilitate conversions and user interface interactions.
+///
+/// The following properties are available:
+/// - `numberName`: Returns the string representation of the radix value.
+/// - `localizedName`: Provides a localized name for the radix, suitable for
+/// display in the user interface.
+/// - `value`: Returns the integer value of the radix, which corresponds to its
+/// base (e.g., binary is 2).
+/// - `keyboardType`: Returns the appropriate keyboard type for user input
+/// based on the radix.
+///
+/// The enum includes the following cases:
+/// - `binary`: Base 2
+/// - `ternary`: Base 3
+/// - `quaternary`: Base 4
+/// - `quinary`: Base 5
+/// - `senary`: Base 6
+/// - `octal`: Base 8
+/// - `nonary`: Base 9
+/// - `decimal`: Base 10
+/// - `duodecimal`: Base 12
+/// - `hexadecimal`: Base 16
 enum Radix: String, Codable, CaseIterable {
     
     case binary
@@ -20,10 +48,13 @@ enum Radix: String, Codable, CaseIterable {
     case duodecimal
     case hexadecimal
     
+    /// Returns the string representation of the radix value.
     var numberName: String {
         String(self.value)
     }
     
+    /// Provides a localized name for the radix, suitable for display in the
+    /// user interface.
     var localizedName: String {
         switch self {
         case .binary:
@@ -58,6 +89,7 @@ enum Radix: String, Codable, CaseIterable {
         }
     }
     
+    /// Returns the integer value of the radix, which corresponds to its base.
     var value: Int {
         switch self {
         case .binary: 2
@@ -73,6 +105,7 @@ enum Radix: String, Codable, CaseIterable {
         }
     }
     
+    /// Returns the appropriate keyboard type for user input based on the radix.
     var keyboardType: UIKeyboardType {
         switch self {
         case .binary, .ternary, .quaternary, .quinary, .senary, .octal, .nonary, .decimal:
