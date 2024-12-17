@@ -8,6 +8,26 @@
 import Foundation
 
 extension RadixConversionSet {
+    
+    /// A static property that provides sample data for testing and demonstration
+    /// purposes.
+    ///
+    /// This property contains an array of `RadixConversionSet` instances, each
+    /// initialized with different input numbers, selected radices, and their
+    /// corresponding conversions. It can be used to quickly populate a user
+    /// interface or for testing purposes without needing to perform actual conversions.
+    ///
+    /// The sample data includes:
+    /// - A conversion set for the decimal number "5" with conversions to various
+    /// bases.
+    /// - A conversion set for the hexadecimal number "A" with conversions to
+    /// various bases.
+    /// - A conversion set for the decimal number "15" with conversions to various
+    /// bases.
+    /// - A conversion set for the binary number "1101" with conversions to various
+    /// bases.
+    /// - A conversion set for the decimal number "20" with conversions to various
+    /// bases.
     static let sampleData: [RadixConversionSet] = [
         RadixConversionSet(
             date: .now - (86400 * 10),
