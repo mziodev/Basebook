@@ -8,8 +8,14 @@
 import Foundation
 import SwiftData
 
+/// A singleton class that manages sample data for the application.
+///
+/// The `SampleData` class is responsible for creating and managing a model
+/// container that holds sample data for the application. It initializes the
+/// data model and provides access to the main context for data operations.
 @MainActor
 class SampleData {
+
     static let shared = SampleData()
     
     let modelContainer: ModelContainer
@@ -18,6 +24,12 @@ class SampleData {
         modelContainer.mainContext
     }
     
+    /// A sample `RadixConversionSet` instance from the sample data.
+    var radixConversionSet: RadixConversionSet {
+        RadixConversionSet.sampleData[0]
+    }
+    
+    /// Private initializer to set up the model container and insert sample data.
     private init() {
         let schema = Schema([
             RadixConversionSet.self,
@@ -40,9 +52,11 @@ class SampleData {
         }
     }
     
+    /// Inserts sample data into the model context.
     private func insertSampleData() {
-        for conversionSet in RadixConversionSet.sampleData {
-            modelContext.insert(conversionSet)
+        
+        RadixConversionSet.sampleData.forEach {
+            modelContext.insert($0)
         }
         
         do {
@@ -50,9 +64,5 @@ class SampleData {
         } catch {
             print("Sample data modelContext failed to save.")
         }
-    }
-    
-    var conversionSet: RadixConversionSet {
-        RadixConversionSet.sampleData[0]
     }
 }

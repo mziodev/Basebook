@@ -6,3 +6,5 @@
 
 ## When history is empty we need to show a message and unable the clear history button
 
+## Don't forget to update What's New screen!!!
+
