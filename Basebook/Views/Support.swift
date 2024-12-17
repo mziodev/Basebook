@@ -20,7 +20,7 @@ struct Support: View {
                     Section {
                         Link(
                             "mziodev@gmail.com",
-                            destination: BasebookURL.email
+                            destination: URLs.email
                         )
                     } header: {
                         Text("Contact Us")
@@ -35,12 +35,12 @@ struct Support: View {
                     Section("Policies") {
                         Link(
                             "Privacy Policy",
-                            destination: BasebookURL.privacyPolicy
+                            destination: URLs.privacyPolicy
                         )
                         
                         Link(
                             "Terms of Service (EULA)",
-                            destination: BasebookURL.termsOfUse
+                            destination: URLs.termsOfUse
                         )
                     }
                     

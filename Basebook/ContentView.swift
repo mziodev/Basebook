@@ -239,7 +239,7 @@ struct ContentView: View {
     }
     
     private func showAppStoreRating() {
-        let url = BasebookURL.writeReview
+        let url = URLs.writeReview
         
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(
