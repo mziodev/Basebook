@@ -201,12 +201,12 @@ struct ContentView: View {
         }
         
         do {
-            let decimalInputNumber = try RadixConverter.convert(
+            let decimalInputNumber = try RadixConversions.convert(
                 radixConversionSet.inputNumber,
                 from: radixConversionSet.selectedRadix.value
             )
             
-            radixConversionSet.radixConversions = ConversionsViewModel.calculateRadixConversions(
+            radixConversionSet.radixConversions = RadixConversions.calculate(
                 for: decimalInputNumber
             )
             
