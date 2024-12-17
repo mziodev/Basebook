@@ -8,6 +8,7 @@
 import SwiftUI
 
 extension View {
+    
     func primaryGradientBackground() -> some View {
         modifier(PrimaryGradientBackground())
     }
