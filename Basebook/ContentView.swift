@@ -13,7 +13,9 @@ struct ContentView: View {
     
     @Environment(\.modelContext) var modelContext
     
-    @State var radixConversionSet = RadixConversionSet()
+    @Query private var radixConversionSets: [RadixConversionSet]
+    
+    @State private var radixConversionSet = RadixConversionSet()
     
     @State private var showingHistory: Bool = false
     @State private var showingWhatsNew: Bool = false
@@ -24,6 +26,17 @@ struct ContentView: View {
     
     @FocusState private var isTextFieldFocused: Bool
     
+    private var isInputNumberEmpty: Bool {
+        radixConversionSet.inputNumber == "0" || radixConversionSet.inputNumber.isEmpty
+    }
+    
+    private var isConverButtonDisabled: Bool {
+        isInputNumberEmpty || radixConversionSets.containsSet(
+            with: radixConversionSet.inputNumber,
+            selectedRadix: radixConversionSet.selectedRadix.value
+        )
+    }
+
     private func showWhatsNew() { showingWhatsNew = true }
     
     private func showSupport() { showingSupport = true }
@@ -86,9 +99,12 @@ struct ContentView: View {
                             }
                         }
                         .frame(width: 100, height: 33)
-                        .background(.bbForestGreen)
+                        .background(
+                            radixConversionSet.inputNumber.isEmpty ? .gray : .bbForestGreen
+                        )
                         .foregroundStyle(.white)
                         .clipShape(.rect(cornerRadius: 8))
+                        .disabled(radixConversionSet.inputNumber.isEmpty)
                         
                         Spacer()
                     }
@@ -200,8 +216,7 @@ struct ContentView: View {
     }
     
     private func fillRadixConversionSet() {
-        if radixConversionSet.inputNumber == "0" || radixConversionSet.inputNumber.isEmpty {
-            
+        if isInputNumberEmpty {
             alertMessage = ConversionError.zeroNumber.localizedDescription
             showingConversionAlert = true
             
@@ -220,13 +235,27 @@ struct ContentView: View {
                 for: decimalInputNumber
             )
             
-            let newRadixConversionSet = RadixConversionSet(
-                inputNumber: radixConversionSet.inputNumber,
-                selectedRadix: radixConversionSet.selectedRadix,
-                radixConversions: radixConversionSet.radixConversions
-            )
-            
-            modelContext.insert(newRadixConversionSet)
+            if !radixConversionSets.containsSet(
+                    with: radixConversionSet.inputNumber,
+                    selectedRadix: radixConversionSet.selectedRadix.value) {
+                
+                let newRadixConversionSet = RadixConversionSet(
+                    inputNumber: radixConversionSet.inputNumber,
+                    selectedRadix: radixConversionSet.selectedRadix,
+                    radixConversions: radixConversionSet.radixConversions
+                )
+                
+                modelContext.insert(newRadixConversionSet)
+            } else {
+                if let radixConversionSetToUpdate = radixConversionSets.getSet(
+                    with: radixConversionSet.inputNumber,
+                    selectedRadix: radixConversionSet.selectedRadix.value
+                ) {
+                    radixConversionSetToUpdate.date = .now
+                    
+                    modelContext.insert(radixConversionSetToUpdate)
+                }
+            }
             
             isTextFieldFocused = false
         } catch let error as ConversionError {
