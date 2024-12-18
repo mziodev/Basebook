@@ -1,5 +1,5 @@
 //
-//  ListRow.swift
+//  RadixConversionsListRow.swift
 //  Basebook
 //
 //  Created by MZiO on 29/10/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ListRow: View {
+struct RadixConversionsListRow: View {
     let currentRadix: Radix
     let selectedRadix: Radix
     let value: String
@@ -44,12 +44,12 @@ struct ListRow: View {
 
 #Preview("Different Radix") {
     List {
-        ListRow(currentRadix: .decimal, selectedRadix: .binary, value: "1234")
+        RadixConversionsListRow(currentRadix: .decimal, selectedRadix: .binary, value: "1234")
     }
 }
 
 #Preview("Same Radix") {
     List {
-        ListRow(currentRadix: .decimal, selectedRadix: .decimal, value: "1234")
+        RadixConversionsListRow(currentRadix: .decimal, selectedRadix: .decimal, value: "1234")
     }
 }

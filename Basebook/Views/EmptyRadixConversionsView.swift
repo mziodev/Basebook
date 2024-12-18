@@ -1,5 +1,5 @@
 //
-//  EmptyConversions.swift
+//  EmptyRadixConversionsView.swift
 //  Basebook
 //
 //  Created by MZiO on 30/10/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EmptyRadixConversions: View {
+struct EmptyRadixConversionsView: View {
     @Environment(\.colorScheme) private var colorScheme
     
     private var basebookBackgroundImage: String {
@@ -32,5 +32,5 @@ struct EmptyRadixConversions: View {
 }
 
 #Preview {
-    EmptyRadixConversions()
+    EmptyRadixConversionsView()
 }

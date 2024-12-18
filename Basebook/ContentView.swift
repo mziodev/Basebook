@@ -24,8 +24,20 @@ struct ContentView: View {
     
     @FocusState private var isTextFieldFocused: Bool
     
-    private var isZeroInputNumber: Bool {
-        radixConversionSet.inputNumber == "0" || radixConversionSet.inputNumber.isEmpty
+    private func showWhatsNew() { showingWhatsNew = true }
+    
+    private func showSupport() { showingSupport = true }
+    
+    private func showAppStoreRating() {
+        let url = URLs.writeReview
+        
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(
+                url,
+                options: [:],
+                completionHandler: nil
+            )
+        }
     }
     
     var body: some View {
@@ -88,7 +100,7 @@ struct ContentView: View {
                     if !radixConversionSet.radixConversions.isEmpty {
                         Section {
                             ForEach(radixConversionSet.radixConversions, id:\.radix) { radixConversion in
-                                ListRow(
+                                RadixConversionsListRow(
                                     currentRadix: radixConversion.radix,
                                     selectedRadix: radixConversionSet.selectedRadix,
                                     value: radixConversion.value
@@ -96,9 +108,8 @@ struct ContentView: View {
                                 .listRowBackground(Color.clear)
                             }
                         } header: {
-                            ListSectionHeader(
-                                title: String(localized: "Conversions")
-                            )
+                            Text("Conversions")
+                                .font(.callout.smallCaps())
                         }
                     }
                 }
@@ -107,7 +118,7 @@ struct ContentView: View {
                 .padding(.bottom)
                 .overlay {
                     if radixConversionSet.radixConversions.isEmpty {
-                        EmptyRadixConversions()
+                        EmptyRadixConversionsView()
                     }
                 }
             }
@@ -189,14 +200,13 @@ struct ContentView: View {
     }
     
     private func fillRadixConversionSet() {
-        if isZeroInputNumber {
+        if radixConversionSet.inputNumber == "0" || radixConversionSet.inputNumber.isEmpty {
+            
             alertMessage = ConversionError.zeroNumber.localizedDescription
             showingConversionAlert = true
             
             return
-        }
-        
-        if !radixConversionSet.radixConversions.isEmpty {
+        } else {
             radixConversionSet.radixConversions.removeAll(keepingCapacity: true)
         }
         
@@ -227,26 +237,6 @@ struct ContentView: View {
             showingConversionAlert = true
             
             return
-        }
-    }
-    
-    private func showWhatsNew() {
-        showingWhatsNew = true
-    }
-    
-    private func showSupport() {
-        showingSupport = true
-    }
-    
-    private func showAppStoreRating() {
-        let url = URLs.writeReview
-        
-        if UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(
-                url,
-                options: [:],
-                completionHandler: nil
-            )
         }
     }
 }
