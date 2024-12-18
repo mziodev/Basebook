@@ -1,5 +1,5 @@
 //
-//  Welcome.swift
+//  WelcomeView.swift
 //  Basebook
 //
 //  Created by MZiO on 6/11/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Welcome: View {
+struct WelcomeView: View {
     @Binding var isFirstLaunch: Bool
     
     var body: some View {
@@ -43,7 +43,8 @@ struct Welcome: View {
             }
             
             Button("Continue", action: goToApp)
-                .font(.title3.bold())
+                .font(.title3)
+                .bold()
                 .frame(maxWidth: .infinity)
                 .padding(.vertical)
                 .foregroundStyle(.white)
@@ -55,7 +56,7 @@ struct Welcome: View {
                 .padding(.bottom)
         }
         .padding()
-        .primaryGradientBackground()
+        .basebookGradientBackground()
     }
     
     func goToApp() { isFirstLaunch = false }
@@ -87,5 +88,5 @@ struct Feature: View {
 }
 
 #Preview {
-    Welcome(isFirstLaunch: .constant(true))
+    WelcomeView(isFirstLaunch: .constant(true))
 }

@@ -1,5 +1,5 @@
 //
-//  WhatsNew.swift
+//  WhatsNewView.swift
 //  Basebook
 //
 //  Created by MZiO on 6/11/24.
@@ -7,8 +7,10 @@
 
 import SwiftUI
 
-struct WhatsNew: View {
+struct WhatsNewView: View {
     @Environment(\.dismiss) private var dismiss
+    
+    private func dismissView() { dismiss() }
     
     var body: some View {
         NavigationStack {
@@ -35,7 +37,7 @@ struct WhatsNew: View {
             }
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
-            .secondaryGradientBackground()
+            .forestGreenGradientBackground()
             .navigationTitle("What's New")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
@@ -44,14 +46,10 @@ struct WhatsNew: View {
             }
         }
     }
-    
-    private func dismissView() {
-        dismiss()
-    }
 }
 
 #Preview {
-    WhatsNew()
+    WhatsNewView()
 }
 
 struct UpdateView: View {

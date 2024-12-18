@@ -1,5 +1,5 @@
 //
-//  Support.swift
+//  SupportView.swift
 //  Basebook
 //
 //  Created by MZiO on 6/11/24.
@@ -7,11 +7,13 @@
 
 import SwiftUI
 
-struct Support: View {
+struct SupportView: View {
     @Environment(\.dismiss) private var dismiss
     
     let appVersionNumber = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
     let appBuildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
+    
+    private func dismissView() { dismiss() }
     
     var body: some View {
         NavigationStack {
@@ -74,7 +76,7 @@ struct Support: View {
                     }
                 }
             }
-            .secondaryGradientBackground()
+            .forestGreenGradientBackground()
             .navigationTitle("Support")
             .toolbar {
                 ToolbarItem {
@@ -83,28 +85,24 @@ struct Support: View {
             }
         }
     }
-    
-    private func dismissView() {
-        dismiss()
-    }
-    
-    struct AppInfo: View {
-        let text: String
-        let number: String
-        
-        var body: some View {
-            HStack(spacing: 10) {
-                Text(text)
-                
-                Text(number)
-                    .fontDesign(.rounded)
-                    .bold()
-                    .foregroundStyle(.bbForestGreen)
-            }
-        }
-    }
 }
 
 #Preview {
-    Support()
+    SupportView()
+}
+
+struct AppInfo: View {
+    let text: String
+    let number: String
+    
+    var body: some View {
+        HStack(spacing: 10) {
+            Text(text)
+            
+            Text(number)
+                .fontDesign(.rounded)
+                .bold()
+                .foregroundStyle(.bbForestGreen)
+        }
+    }
 }

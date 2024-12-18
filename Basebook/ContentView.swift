@@ -111,11 +111,11 @@ struct ContentView: View {
                     }
                 }
             }
-            .primaryGradientBackground()
+            .basebookGradientBackground()
             .edgesIgnoringSafeArea(.bottom)
             .navigationTitle("Basebook")
             .sheet(isPresented: $isFirstLaunch) {
-                Welcome(isFirstLaunch: $isFirstLaunch)
+                WelcomeView(isFirstLaunch: $isFirstLaunch)
             }
             .sheet(isPresented: $showingHistory) {
                 HistoryList(
@@ -124,10 +124,10 @@ struct ContentView: View {
                 .presentationDetents([.medium, .large])
             }
             .sheet(isPresented: $showingWhatsNew) {
-                WhatsNew()
+                WhatsNewView()
             }
             .sheet(isPresented: $showingSupport) {
-                Support()
+                SupportView()
             }
             .alert(
                 "Warning!",

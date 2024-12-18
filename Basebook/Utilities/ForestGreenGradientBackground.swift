@@ -1,5 +1,5 @@
 //
-//  SecondaryGradientBackground.swift
+//  ForestGreenGradientBackground.swift
 //  Basebook
 //
 //  Created by MZiO on 6/11/24.
@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct SecondaryGradientBackground: ViewModifier {
+struct ForestGreenGradientBackground: ViewModifier {
+    
     @Environment(\.colorScheme) private var colorScheme
     
     private let darkModeGradient = Gradient(
@@ -31,5 +32,12 @@ struct SecondaryGradientBackground: ViewModifier {
     func body(content: Content) -> some View {
         content
             .background(gradient)
+    }
+}
+
+extension View {
+    
+    func forestGreenGradientBackground() -> some View {
+        modifier(ForestGreenGradientBackground())
     }
 }

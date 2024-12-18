@@ -1,5 +1,5 @@
 //
-//  PrimaryGradientBackground.swift
+//  BasebookGradientBackground.swift
 //  Basebook
 //
 //  Created by MZiO on 6/11/24.
@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct PrimaryGradientBackground: ViewModifier {
+struct BasebookGradientBackground: ViewModifier {
+    
     @Environment(\.colorScheme) private var colorScheme
     
     private let lightModeGradient = Gradient(
@@ -31,5 +32,12 @@ struct PrimaryGradientBackground: ViewModifier {
     func body(content: Content) -> some View {
         content
             .background(gradient)
+    }
+}
+
+extension View {
+    
+    func basebookGradientBackground() -> some View {
+        modifier(BasebookGradientBackground())
     }
 }
