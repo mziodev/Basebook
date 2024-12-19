@@ -80,15 +80,14 @@ struct HistoryList: View {
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
             .scrollIndicators(.hidden)
-            .background(
-                Gradient(
-                    colors: [
-                        Color.bbForestGreen.opacity(0.2),
-                        Color.bbForestGreen.opacity(0.6)
-                    ]
-                )
-            )
+            .forestGreenGradientBackground()
             .navigationTitle("History")
+            .overlay {
+                if history.isEmpty {
+                    Text("No history yet")
+                        .foregroundStyle(.secondary)
+                }
+            }
             .alert(
                 "Warning",
                 isPresented: $showingClearHistoryAlert,
@@ -110,10 +109,13 @@ struct HistoryList: View {
                     Button("Clear History", action: confirmClearHistory)
                         .font(.headline)
                         .padding(.horizontal, 10)
-                        .background(Color.bbEngineeringOrange)
+                        .background(
+                            history.isEmpty ? Color.gray : Color.bbEngineeringOrange
+                        )
                         .foregroundStyle(.white)
                         .clipShape(.rect(cornerRadius: 6))
                         .padding(.top)
+                        .disabled(history.isEmpty)
                 }
             }
             .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
