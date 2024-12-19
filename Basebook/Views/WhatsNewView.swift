@@ -15,6 +15,26 @@ struct WhatsNewView: View {
     var body: some View {
         NavigationStack {
             List {
+                Section("Version 1.0.1") {
+                    UpdateView(
+                        text: String(
+                            localized: "We’ve made some improvements to the history list. Now, the conversions are grouped by year, making it easier to find what you’re looking for."
+                        )
+                    )
+                    
+                    UpdateView(
+                        text: String(
+                            localized: "Now if the history list is empty a 'No conversions yet.' message will appear, and the Reset History button will be disabled."
+                        )
+                    )
+                    
+                    UpdateView(
+                        text: String(
+                            localized: "We've made lots of internal code improvements so the app runs faster and smoother."
+                        )
+                    )
+                }
+                
                 Section("Version 1.0") {
                     UpdateView(
                         text: String(
