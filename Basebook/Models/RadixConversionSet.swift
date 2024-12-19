@@ -47,4 +47,11 @@ class RadixConversionSet {
         self.selectedRadix = selectedRadix
         self.radixConversions = radixConversions
     }
+    
+    func copy(from radixConversionSet: RadixConversionSet) {
+        date = radixConversionSet.date
+        inputNumber = radixConversionSet.inputNumber
+        selectedRadix = radixConversionSet.selectedRadix
+        radixConversions = radixConversionSet.radixConversions
+    }
 }

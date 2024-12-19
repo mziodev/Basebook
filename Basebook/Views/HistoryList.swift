@@ -9,6 +9,7 @@ import SwiftData
 import SwiftUI
 
 struct HistoryList: View {
+    
     @Query(
         sort: \RadixConversionSet.date,
         order: .reverse
@@ -21,22 +22,60 @@ struct HistoryList: View {
     
     @State private var showingClearHistoryAlert: Bool = false
     
+    private var historyGroupedByYear: [(String, [RadixConversionSet])] {
+        Dictionary(grouping: history) { (radixConversionSet) -> String in
+            let year = Calendar.current.component(
+                .year,
+                from: radixConversionSet.date
+            )
+            return String(year)
+        }
+        .sorted { $0.key > $1.key }
+        .map { ($0.key, $0.value) }
+    }
+    
+    private func dismissView() { dismiss() }
+    
+    private func deleteItem(offsets: IndexSet) {
+        offsets.forEach { modelContext.delete(history[$0]) }
+    }
+    
+    private func confirmClearHistory() {
+        showingClearHistoryAlert = true
+    }
+    
+    private func clearHistory() {
+        history.forEach { modelContext.delete($0) }
+    }
+    
     var body: some View {
         NavigationStack {
             List {
-                ForEach(history) { radixConversionSet in
-                    HistoryListRow(radixConversionSet: radixConversionSet)
-                        .listRowBackground(Color.clear)
-                        .onTapGesture {
-                            self.radixConversionSet = RadixConversionSet(
-                                inputNumber: radixConversionSet.inputNumber,
-                                selectedRadix: radixConversionSet.selectedRadix,
-                                radixConversions: radixConversionSet.radixConversions
-                            )
-                            dismiss()
+                ForEach(historyGroupedByYear, id: \.0) {
+                    year,
+                    conversionSets in
+                    Section {
+                        ForEach(
+                            Array(zip(conversionSets.indices, conversionSets)),
+                            id: \.1
+                        ) { index, conversionSet in
+                            HistoryListRow(radixConversionSet: conversionSet)
+                                .listRowBackground(Color.clear)
+                                .onTapGesture {
+                                    radixConversionSet.copy(from: conversionSet)
+                                    dismissView()
+                                }
                         }
+                        .onDelete { offsets in
+                            for offset in offsets {
+                                modelContext.delete(history[offset])
+                            }
+                        }
+                    } header: {
+                        Text(year)
+                            .foregroundStyle(.accent)
+                    }
                 }
-                .onDelete(perform: deleteItem)
             }
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
@@ -81,22 +120,6 @@ struct HistoryList: View {
             .toolbarBackground(.ultraThinMaterial, for: .bottomBar)
             .toolbarBackground(.visible, for: .bottomBar)
         }
-    }
-    
-    private func dismissView() {
-        dismiss()
-    }
-    
-    private func deleteItem(offsets: IndexSet) {
-        offsets.forEach { modelContext.delete(history[$0]) }
-    }
-    
-    private func confirmClearHistory() {
-        showingClearHistoryAlert = true
-    }
-    
-    private func clearHistory() {
-        history.forEach { modelContext.delete($0) }
     }
 }
 

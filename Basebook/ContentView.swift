@@ -29,13 +29,6 @@ struct ContentView: View {
     private var isInputNumberEmpty: Bool {
         radixConversionSet.inputNumber == "0" || radixConversionSet.inputNumber.isEmpty
     }
-    
-    private var isConverButtonDisabled: Bool {
-        isInputNumberEmpty || radixConversionSets.containsSet(
-            with: radixConversionSet.inputNumber,
-            selectedRadix: radixConversionSet.selectedRadix.value
-        )
-    }
 
     private func showWhatsNew() { showingWhatsNew = true }
     
@@ -75,12 +68,7 @@ struct ContentView: View {
                         }
                     }
                     .pickerStyle(.palette)
-                    .onChange(of: radixConversionSet.selectedRadix) { oldvalue, newValue in
-                        handleRadixChange(
-                            oldValue: oldvalue,
-                            newValue: newValue
-                        )
-                    }
+                    .onChange(of: radixConversionSet.selectedRadix, handleRadixChange)
                     
                     HStack(spacing: 30) {
                         Spacer()

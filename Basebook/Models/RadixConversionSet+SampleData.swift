@@ -30,7 +30,7 @@ extension RadixConversionSet {
     /// bases.
     static let sampleData: [RadixConversionSet] = [
         RadixConversionSet(
-            date: .now - (86400 * 10),
+            date: .now - (86400 * 370),
             inputNumber: "5",
             selectedRadix: .decimal,
             radixConversions: [
@@ -47,7 +47,7 @@ extension RadixConversionSet {
             ]
         ),
         RadixConversionSet(
-            date: .now - (86400 * 7),
+            date: .now - (86400 * 107),
             inputNumber: "A",
             selectedRadix: .hexadecimal,
             radixConversions: [
@@ -64,7 +64,7 @@ extension RadixConversionSet {
             ]
         ),
         RadixConversionSet(
-            date: .now - (86400 * 5),
+            date: .now - (86400 * 65),
             inputNumber: "15",
             selectedRadix: .decimal,
             radixConversions: [
@@ -81,7 +81,7 @@ extension RadixConversionSet {
             ]
         ),
         RadixConversionSet(
-            date: .now - (86400 * 2),
+            date: .now - (86400 * 22),
             inputNumber: "1101",
             selectedRadix: .binary,
             radixConversions: [
@@ -98,7 +98,7 @@ extension RadixConversionSet {
             ]
         ),
         RadixConversionSet(
-            date: .now,
+            date: .now - (86400 * 3),
             inputNumber: "20",
             selectedRadix: .decimal,
             radixConversions: [
