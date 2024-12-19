@@ -178,22 +178,6 @@
         }
       }
     },
-    "Build number:" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Número de compilación:"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Numéro de build :"
-          }
-        }
-      }
-    },
     "Clear" : {
       "localizations" : {
         "es" : {
@@ -405,6 +389,22 @@
         }
       }
     },
+    "In this new version, if the input field is empty, the Convert button will be disabled." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En esta nueva versión, si el campo de entrada está vacío, el botón Convertir estará desactivado."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dans cette nouvelle version, si le champ de saisie est vide, le bouton Convertir sera désactivé."
+          }
+        }
+      }
+    },
     "Includes the 10 most used bases" : {
       "localizations" : {
         "es" : {
@@ -470,7 +470,20 @@
       }
     },
     "No history yet" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todavía no hay historial"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas encore d'histoire"
+          }
+        }
+      }
     },
     "Nonary" : {
       "comment" : "Feminine version of Nonary",
@@ -485,6 +498,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nonaire"
+          }
+        }
+      }
+    },
+    "Now if the history list is empty a 'No conversions yet.' message will appear, and the Delete History button will be disabled." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahora si la lista del historial está vacía, aparecerá el mensaje \"Aún no hay conversiones\" y el botón Borrar Historial se desactivará."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Désormais, si la liste de l'historique est vide, le message ‘Pas encore d'histoire’ apparaîtra et le bouton Supprimer Historique sera désactivé."
           }
         }
       }
@@ -814,6 +843,22 @@
         }
       }
     },
+    "Version 1.0.1" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión 1.0.1"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version 1.0.1"
+          }
+        }
+      }
+    },
     "Version number:" : {
       "localizations" : {
         "es" : {
@@ -858,6 +903,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Avertissement!"
+          }
+        }
+      }
+    },
+    "We've made lots of internal code improvements so the app runs faster and smoother." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hemos realizado muchas mejoras en el código interno para que la aplicación se ejecute de forma más rápida y fluida."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nous avons apporté de nombreuses améliorations au code interne afin que l'application fonctionne plus rapidement et de manière plus fluide."
+          }
+        }
+      }
+    },
+    "We’ve made some improvements to the history list. Now, the conversions are grouped by year, making it easier to find what you’re looking for." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hemos realizado algunas mejoras en la lista del historial. Ahora, las conversiones están agrupadas por año, lo que hace que sea más fácil encontrar lo que buscas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nous avons apporté quelques améliorations à la liste de l’historique. Désormais, les conversions sont regroupées par année, ce qui permet de trouver plus facilement ce que vous recherchez."
           }
         }
       }

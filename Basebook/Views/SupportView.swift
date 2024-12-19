@@ -11,7 +11,6 @@ struct SupportView: View {
     @Environment(\.dismiss) private var dismiss
     
     let appVersionNumber = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
-    let appBuildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
     
     private func dismissView() { dismiss() }
     
@@ -50,11 +49,6 @@ struct SupportView: View {
                         AppInfo(
                             text: String(localized: "Version number:"),
                             number: appVersionNumber
-                        )
-                        
-                        AppInfo(
-                            text: String(localized: "Build number:"),
-                            number: appBuildNumber
                         )
                     }
                 }

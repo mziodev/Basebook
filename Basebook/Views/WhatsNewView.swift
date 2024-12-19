@@ -24,7 +24,13 @@ struct WhatsNewView: View {
                     
                     UpdateView(
                         text: String(
-                            localized: "Now if the history list is empty a 'No conversions yet.' message will appear, and the Reset History button will be disabled."
+                            localized: "Now if the history list is empty a 'No conversions yet.' message will appear, and the Delete History button will be disabled."
+                        )
+                    )
+                    
+                    UpdateView(
+                        text: String(
+                            localized: "In this new version, if the input field is empty, the Convert button will be disabled."
                         )
                     )
                     
